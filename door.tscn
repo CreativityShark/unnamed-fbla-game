@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdanbgq20075i"]
+
+[ext_resource type="Script" path="res://door.gd" id="1_twgow"]
+[ext_resource type="Texture2D" uid="uid://cnwb62uronk6e" path="res://art/door.png" id="2_rse2k"]
+[ext_resource type="Texture2D" uid="uid://bbc48xdweuv4u" path="res://art/keycard_bubble.png" id="3_5angw"]
+[ext_resource type="FontFile" uid="uid://k7fync4ajpya" path="res://art/joystix.monospace-regular.otf" id="4_pxnlp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvtq0"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0q6v"]
+size = Vector2(48, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xf37m"]
+font = ExtResource("4_pxnlp")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Door" type="Area2D" groups=["door"]]
+script = ExtResource("1_twgow")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_rse2k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cvtq0")
+
+[node name="ShowPrompt" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShowPrompt"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_k0q6v")
+
+[node name="CardBubble" type="TextureRect" parent="ShowPrompt"]
+visible = false
+texture_filter = 1
+offset_left = -32.0
+offset_top = -56.0
+offset_right = 32.0
+offset_bottom = -16.0
+texture = ExtResource("3_5angw")
+
+[node name="Label" type="Label" parent="ShowPrompt/CardBubble"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 59.0
+offset_bottom = 31.0
+text = "00"
+label_settings = SubResource("LabelSettings_xf37m")
+horizontal_alignment = 2

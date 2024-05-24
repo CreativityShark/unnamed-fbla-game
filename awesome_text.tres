@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://m88ex7cp0vud"]
+
+[ext_resource type="FontFile" uid="uid://k7fync4ajpya" path="res://art/joystix.monospace-regular.otf" id="1_f6wka"]
+
+[resource]
+font = ExtResource("1_f6wka")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
