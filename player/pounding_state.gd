@@ -16,3 +16,7 @@ func handle_input(player: Player):
 func on_enter(player: Player):
 	player.velocity.x = 0
 	player.velocity.y = player.JUMP_VELOCITY
+
+
+func animate(sprite: Node, player: Player):
+	sprite.play("pound")

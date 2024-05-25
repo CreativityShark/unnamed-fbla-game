@@ -13,6 +13,11 @@ func handle_input(player: Player):
 	
 	return super(player)
 
+
 func on_enter(player: Player):
 	player.velocity.y = player.JUMP_VELOCITY / 2
 	player.velocity.x += DIVE_FORCE * sign(player.velocity.x)
+
+
+func animate(sprite: Node, player: Player):
+	sprite.play("dive")

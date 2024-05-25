@@ -79,6 +79,7 @@ script = ExtResource("4_f37lq")
 [node name="Player" parent="." instance=ExtResource("3_i020s")]
 process_mode = 3
 scale = Vector2(0.5, 0.5)
+card_count = 0
 
 [node name="GUI" type="CanvasLayer" parent="."]
 process_mode = 3

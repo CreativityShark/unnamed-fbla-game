@@ -15,24 +15,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_left = false
 var current_state: State = STANDING_STATE
 
+@export_category("Card Progress")
 @export var card_count = 0
 
 
 func _process(delta):
-	if current_state is FallingState:
-		if velocity.y < 0:
-			$AnimatedSprite2D.play("jump")
-		else:
-			$AnimatedSprite2D.play("fall")
-	elif current_state is DivingState:
-		$AnimatedSprite2D.play("dive")
-	elif current_state is PoundingState:
-		$AnimatedSprite2D.play("pound")
-	else:
-		if velocity.x == 0:
-			$AnimatedSprite2D.play("idle")
-		else:
-			$AnimatedSprite2D.play("run")
+	current_state.animate($AnimatedSprite2D, self)
+	
 	if sign(velocity.x) < 0:
 		$AnimatedSprite2D.flip_h = true
 	elif sign(velocity.x) > 0:
@@ -57,3 +46,4 @@ func handle_input():
 		current_state.on_exit(self)
 		current_state = new_state
 		current_state.on_enter(self)
+

@@ -21,5 +21,13 @@ func handle_input(player: Player):
 		return PoundingState.new()
 
 
+func animate(sprite: Node, player: Player):
+	super(sprite, player)
+	if player.velocity.y < 0:
+		sprite.play("jump")
+	else:
+		sprite.play("fall")
+
+
 func _on_coyote_timer_timeout():
 	can_jump = false

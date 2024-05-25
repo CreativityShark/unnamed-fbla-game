@@ -16,3 +16,10 @@ func handle_input(player: Player):
 		return FallingState.new()
 	elif Input.is_action_pressed("up"):
 		return player.JUMPING_STATE
+
+
+func animate(sprite: Node, player: Player):
+	if player.velocity.x == 0:
+		sprite.play("idle")
+	else:
+		sprite.play("run")
