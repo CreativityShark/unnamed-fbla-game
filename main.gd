@@ -10,12 +10,7 @@ func _ready():
 	
 	get_tree().paused = true
 	
-	var save_file = FileAccess.open("user://epic.save", FileAccess.READ)
-	var json = JSON.new()
-	json.parse(save_file.get_line())
-	if json.get_data() != null:
-		save_data = json.get_data()
-	save_file.close()
+	load_save()
 	
 	if save_data.has("Cards Collected"):
 		$Player.card_count = save_data["Cards Collected"]
@@ -36,13 +31,24 @@ func _process(delta):
 		get_tree().quit()
 
 
+func load_save():
+	var save_file = FileAccess.open("user://epic.save", FileAccess.READ)
+	var json = JSON.new()
+	json.parse(save_file.get_as_text())
+	print(json.get_error_line())
+	print(json.get_error_message())
+	if json.get_data() != null:
+		save_data = json.get_data()
+	save_file.close()
+
+
 func save():
 	save_data["Cards Collected"] = $Player.card_count
 	save_data["Current Floor"] = current_floor_name
 	save_level_data()
 	
 	var save_file = FileAccess.open("user://epic.save", FileAccess.WRITE_READ)
-	save_file.store_line(JSON.stringify(save_data))
+	save_file.store_line(JSON.stringify(save_data, "\t"))
 	save_file.close()
 	print("saved!")
 
