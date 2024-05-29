@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=3 uid="uid://pp0o3e7rgxu"]
+
+[ext_resource type="Script" path="res://screens/time_display.gd" id="1_m5dbb"]
+[ext_resource type="FontFile" uid="uid://k7fync4ajpya" path="res://art/joystix.monospace-regular.otf" id="1_noysi"]
+[ext_resource type="Texture2D" uid="uid://vv71m4be7rol" path="res://art/no_keycard.png" id="2_4fogm"]
+[ext_resource type="Texture2D" uid="uid://cihippgdjny6h" path="res://art/keycard.png" id="2_o4p50"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k7amv"]
+font = ExtResource("1_noysi")
+font_size = 48
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ly8n"]
+font = ExtResource("1_noysi")
+font_size = 32
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ua7vt"]
+font = ExtResource("1_noysi")
+font_size = 32
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_34qwj"]
+font = ExtResource("1_noysi")
+font_size = 32
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="TimeDisplay" type="Control" groups=["screen"]]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m5dbb")
+card_texture = ExtResource("2_o4p50")
+no_card_texture = ExtResource("2_4fogm")
+
+[node name="HUDTimer" type="Label" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = -496.0
+offset_right = 944.0
+offset_bottom = -438.0
+text = "0:00"
+label_settings = SubResource("LabelSettings_k7amv")
+horizontal_alignment = 2
+
+[node name="LowPar" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 520.0
+offset_top = -432.0
+offset_right = 936.0
+offset_bottom = -392.0
+text = "0:00"
+label_settings = SubResource("LabelSettings_3ly8n")
+horizontal_alignment = 2
+
+[node name="CardIcon" type="TextureRect" parent="LowPar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 248.0
+offset_top = 4.0
+offset_right = 272.0
+offset_bottom = 20.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_4fogm")
+
+[node name="MedPar" type="Label" parent="."]
+layout_mode = 0
+offset_left = 520.0
+offset_top = -392.0
+offset_right = 936.0
+offset_bottom = -352.0
+text = "0:00"
+label_settings = SubResource("LabelSettings_ua7vt")
+horizontal_alignment = 2
+
+[node name="CardIcon" type="TextureRect" parent="MedPar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 248.0
+offset_top = 4.0
+offset_right = 272.0
+offset_bottom = 20.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_4fogm")
+
+[node name="HighPar" type="Label" parent="."]
+layout_mode = 0
+offset_left = 520.0
+offset_top = -352.0
+offset_right = 936.0
+offset_bottom = -312.0
+text = "0:00"
+label_settings = SubResource("LabelSettings_34qwj")
+horizontal_alignment = 2
+
+[node name="CardIcon" type="TextureRect" parent="HighPar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 248.0
+offset_top = 4.0
+offset_right = 272.0
+offset_bottom = 20.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_4fogm")

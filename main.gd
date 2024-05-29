@@ -18,14 +18,13 @@ func _ready():
 		current_floor_name = save_data["Current Floor"]
 	
 	$Camera2D.player = $Player
-	$GUI.level = current_level
 	
 	change_level(current_floor_name, null)
+	
+	ready_gui()
 
 
 func _process(delta):
-	$GUI/CardCount/Label.text = str($Player.card_count)
-	
 	if Input.is_action_just_pressed("quit"):
 		save()
 		get_tree().quit()
@@ -82,32 +81,49 @@ func change_level(level_name: String, exit_location):
 	else:
 		$Player.position = level.spawn_pos
 	
-	$GUI.level = level
-	$GUI.on_level_change()
-	
 	if level.is_hub:
 		current_floor_name = level_name
 	
 	current_level = level
+	var time_display = $GUIHandler.get_screen("TimeDisplay")
+	if (time_display != null):
+		assert(time_display.is_in_group("screen"))
+		time_display.on_level_change(level)
+
+
+func reset_level():
+	$Player.velocity = Vector2.ZERO
+	$Player.position = current_level.spawn_pos
+	current_level.reset_time()
+
+
+func ready_gui():
+	var card_count = load("res://screens/card_count.tscn").instantiate()
+	card_count.player = $Player
+	$GUIHandler.display(card_count)
 	
-	if level_name == "win":
-		$GUI/WinMenu.show()
+	var time_display = load("res://screens/time_display.tscn").instantiate()
+	time_display.current_level = current_level
+	#time_display.hide()
+	$GUIHandler.display(time_display)
+	
+	var game_over = load("res://screens/game_over.tscn").instantiate()
+	game_over.quit = Callable(self, "bye_bye_now")
+	game_over.hide()
+	$GUIHandler.display(game_over)
+	
+	var main_menu = load("res://screens/main_menu.tscn").instantiate()
+	main_menu.quit = Callable(self, "bye_bye_now")
+	$GUIHandler.display(main_menu)
 
 
 func _on_level_harm_player():
-	$GUI/GameOverMenu.show()
-	$Player.position = current_level.spawn_pos
-	current_level.reset_time()
+	$GUIHandler.show_screen("GameOver")
+	reset_level()
 	get_tree().paused = true
 
 
-func _on_continue_button_pressed():
-	get_tree().paused = false
-	$Player.position = current_level.spawn_pos
-	$GUI/GameOverMenu.hide()
-
-
-func _on_quit_button_pressed():
+func bye_bye_now():
 	save()
 	get_tree().quit()
 

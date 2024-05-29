@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://btc5i004mvvlt"]
+
+[ext_resource type="Script" path="res://screens/game_over.gd" id="1_2ugo4"]
+[ext_resource type="LabelSettings" uid="uid://bq1hjxo5lbik8" path="res://awesome_title_text.tres" id="2_oxfh2"]
+[ext_resource type="Texture2D" uid="uid://cmp0ov8ngvxvh" path="res://art/button.png" id="3_okyyn"]
+[ext_resource type="Texture2D" uid="uid://hccmrw7snew6" path="res://art/button_press.png" id="4_woiku"]
+[ext_resource type="Texture2D" uid="uid://ewc8lul35a2w" path="res://art/button_hover.png" id="5_ebdbt"]
+[ext_resource type="FontFile" uid="uid://k7fync4ajpya" path="res://art/joystix.monospace-regular.otf" id="6_oax26"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_koaoi"]
+font = ExtResource("6_oax26")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v0ofg"]
+font = ExtResource("6_oax26")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GameOver" type="Control" groups=["screen"]]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_2ugo4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1840.0
+offset_top = -1584.0
+offset_right = 1984.0
+offset_bottom = 1464.0
+mouse_filter = 2
+color = Color(0.2, 0.517647, 0.784314, 1)
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -528.0
+offset_top = -368.0
+offset_right = 524.0
+offset_bottom = -57.0
+text = "Game over"
+label_settings = ExtResource("2_oxfh2")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="TextureButton" parent="."]
+texture_filter = 3
+offset_left = -160.0
+offset_top = -56.0
+offset_right = -128.0
+offset_bottom = -44.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("3_okyyn")
+texture_pressed = ExtResource("4_woiku")
+texture_hover = ExtResource("5_ebdbt")
+
+[node name="Label" type="Label" parent="StartButton"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 152.0
+offset_bottom = 44.0
+scale = Vector2(0.2, 0.2)
+text = "cont."
+label_settings = SubResource("LabelSettings_koaoi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="."]
+texture_filter = 3
+offset_left = -160.0
+offset_top = 84.0
+offset_right = -128.0
+offset_bottom = 96.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("3_okyyn")
+texture_pressed = ExtResource("4_woiku")
+texture_hover = ExtResource("5_ebdbt")
+
+[node name="Label" type="Label" parent="QuitButton"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 152.0
+offset_bottom = 44.0
+scale = Vector2(0.2, 0.2)
+text = "quit"
+label_settings = SubResource("LabelSettings_v0ofg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

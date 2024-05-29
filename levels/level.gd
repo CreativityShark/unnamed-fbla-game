@@ -13,6 +13,7 @@ var time = 0
 var player: Player
 var change_level: Callable
 var show_dialogue: Callable
+var has_collided = false
 
 signal harm_player
 
@@ -31,8 +32,11 @@ func _physics_process(delta):
 	if collision:
 		var pos = local_to_map(to_local(collision.get_position()))
 		var data = self.get_cell_tile_data(0, pos)
-		if data and data.get_custom_data("harms_player"):
+		# Check that player is not at spawn pos to keep from emitting immediately after unpausing and thus pausing again
+		# I'd prefer a cleaner solution, but this will work for now
+		if data and data.get_custom_data("harms_player") and player.position != spawn_pos:
 			harm_player.emit()
+			print("emit!")
 
 
 func get_data_to_save():
@@ -85,4 +89,3 @@ func reset_time():
 
 func _on_level_timer_timeout():
 	time += 1
-	print(time)

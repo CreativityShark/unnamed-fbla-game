@@ -30,37 +30,38 @@ func on_level_change():
 
 
 func _process(delta):
-	$TimeDisplay/HUDTimer.text = as_time(level.time)
+	#$TimeDisplay/HUDTimer.text = as_time(level.time)
 	
 	update_time_display()
 
 
 func update_time_display():
-	if level.time <= level.low_par:
-		$TimeDisplay/LowPar.label_settings.font_color = Color(1, 1, 1)
-	else:
-		$TimeDisplay/LowPar.label_settings.font_color = Color(0.5, 0.5, 0.5)
-	if level.time <= level.med_par:
-		$TimeDisplay/MedPar.label_settings.font_color = Color(1, 1, 1)
-	else:
-		$TimeDisplay/MedPar.label_settings.font_color = Color(0.5, 0.5, 0.5)
-	if level.time <= level.high_par:
-		$TimeDisplay/HighPar.label_settings.font_color = Color(1, 1, 1)
-	else:
-		$TimeDisplay/HighPar.label_settings.font_color = Color(0.5, 0.5, 0.5)
-	
-	if level.met_low_par:
-		$TimeDisplay/LowPar/CardIcon.texture = card_texture
-	else:
-		$TimeDisplay/LowPar/CardIcon.texture = no_card_texture
-	if level.met_med_par:
-		$TimeDisplay/MedPar/CardIcon.texture = card_texture
-	else:
-		$TimeDisplay/MedPar/CardIcon.texture = no_card_texture
-	if level.met_high_par:
-		$TimeDisplay/HighPar/CardIcon.texture = card_texture
-	else:
-		$TimeDisplay/HighPar/CardIcon.texture = no_card_texture
+	#if level.time <= level.low_par:
+		#$TimeDisplay/LowPar.label_settings.font_color = Color(1, 1, 1)
+	#else:
+		#$TimeDisplay/LowPar.label_settings.font_color = Color(0.5, 0.5, 0.5)
+	#if level.time <= level.med_par:
+		#$TimeDisplay/MedPar.label_settings.font_color = Color(1, 1, 1)
+	#else:
+		#$TimeDisplay/MedPar.label_settings.font_color = Color(0.5, 0.5, 0.5)
+	#if level.time <= level.high_par:
+		#$TimeDisplay/HighPar.label_settings.font_color = Color(1, 1, 1)
+	#else:
+		#$TimeDisplay/HighPar.label_settings.font_color = Color(0.5, 0.5, 0.5)
+	#
+	#if level.met_low_par:
+		#$TimeDisplay/LowPar/CardIcon.texture = card_texture
+	#else:
+		#$TimeDisplay/LowPar/CardIcon.texture = no_card_texture
+	#if level.met_med_par:
+		#$TimeDisplay/MedPar/CardIcon.texture = card_texture
+	#else:
+		#$TimeDisplay/MedPar/CardIcon.texture = no_card_texture
+	#if level.met_high_par:
+		#$TimeDisplay/HighPar/CardIcon.texture = card_texture
+	#else:
+		#$TimeDisplay/HighPar/CardIcon.texture = no_card_texture
+	pass
 
 
 func display_dialogue(texts: Array[String], speakers: Array[String], times: Array[int]):

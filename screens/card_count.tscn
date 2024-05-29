@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://b72se6c63fn5p"]
+
+[ext_resource type="FontFile" uid="uid://k7fync4ajpya" path="res://art/joystix.monospace-regular.otf" id="1_lvrg6"]
+[ext_resource type="Script" path="res://screens/card_count.gd" id="1_odyoy"]
+[ext_resource type="Texture2D" uid="uid://cihippgdjny6h" path="res://art/keycard.png" id="2_31hg7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b26od"]
+font = ExtResource("1_lvrg6")
+font_size = 48
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CardCount" type="Control" groups=["screen"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_odyoy")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -808.0
+offset_top = -512.0
+offset_right = -649.0
+offset_bottom = -435.0
+text = "000"
+label_settings = SubResource("LabelSettings_b26od")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -936.0
+offset_top = -520.0
+offset_right = -912.0
+offset_bottom = -504.0
+scale = Vector2(5, 5)
+texture = ExtResource("2_31hg7")
