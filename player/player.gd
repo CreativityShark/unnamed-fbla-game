@@ -6,12 +6,13 @@ const SPEED = 300.0
 const MAX_SPEED = 1000.0
 const ACCELERATION = 10.0
 const JUMP_VELOCITY = -650.0
+var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 static var STANDING_STATE = StandingState.new()
 static var JUMPING_STATE = JumpingState.new()
 static var DIVING_STATE = DivingState.new()
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var effective_gravity = GRAVITY
 var facing_left = false
 var current_state: State = STANDING_STATE
 
@@ -29,8 +30,11 @@ func _process(delta):
 
 
 func _physics_process(delta):
+	if not Input.is_action_pressed("up") and effective_gravity != GRAVITY:
+		effective_gravity = GRAVITY
+	
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += GRAVITY * delta
 	
 	handle_input()
 	

@@ -31,6 +31,23 @@ project/assembly_name="FBLA"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg", "res://addons/gut/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "orange",
+"res://addons/godot-git-plugin/": "red",
+"res://addons/gut/": "yellow",
+"res://art/": "teal",
+"res://levels/": "purple",
+"res://player/": "purple",
+"res://screens/": "purple",
+"res://testing/": "pink"
+}
+
 [input]
 
 left={
