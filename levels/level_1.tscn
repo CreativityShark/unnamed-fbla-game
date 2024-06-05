@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://sojssw8845ur"]
+[gd_scene load_steps=7 format=3 uid="uid://sojssw8845ur"]
 
 [ext_resource type="TileSet" uid="uid://chc0o8so6nq76" path="res://levels/tiles.tres" id="1_6k3ck"]
 [ext_resource type="Script" path="res://levels/level.gd" id="2_2psdl"]
 [ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://door.tscn" id="3_8oogx"]
-[ext_resource type="PackedScene" uid="uid://qmx34ogunwbb" path="res://dialogue.tscn" id="4_6nur3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_baueo"]
 size = Vector2(16, 64)
@@ -54,17 +53,10 @@ position = Vector2(0, 8)
 destination_name = "hub"
 exit_location = Vector2(544, 360)
 
-[node name="Door2" parent="." node_paths=PackedStringArray("exit_dialogue") instance=ExtResource("3_8oogx")]
+[node name="Door2" parent="." instance=ExtResource("3_8oogx")]
 position = Vector2(181.333, 344)
 destination_name = "hub"
-exit_dialogue = NodePath("../Dialogue")
 exit_location = Vector2(544, 360)
-
-[node name="Dialogue" parent="." instance=ExtResource("4_6nur3")]
-position = Vector2(0, 474.667)
-speakers = Array[String](["Speaker on the wall", "Millie"])
-texts = Array[String](["Excellent work! Two rooms remain.", "Huh, that wasn't too awful."])
-durations = Array[int]([9, 9])
 
 [connection signal="body_entered" from="Start" to="." method="_on_start_body_entered"]
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

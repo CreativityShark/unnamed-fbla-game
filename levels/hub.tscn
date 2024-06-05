@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvmtgg14hib2"]
+[gd_scene load_steps=5 format=3 uid="uid://cvmtgg14hib2"]
 
 [ext_resource type="TileSet" uid="uid://chc0o8so6nq76" path="res://levels/tiles.tres" id="1_at66e"]
 [ext_resource type="Script" path="res://levels/level.gd" id="2_htqlw"]
 [ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://door.tscn" id="3_3yek6"]
 [ext_resource type="Texture2D" uid="uid://cnwb62uronk6e" path="res://art/door.png" id="4_t23qh"]
-[ext_resource type="PackedScene" uid="uid://qmx34ogunwbb" path="res://dialogue.tscn" id="5_djljk"]
 
 [node name="Hub" type="TileMap"]
 texture_filter = 1
@@ -15,20 +14,17 @@ layer_0/tile_data = PackedInt32Array(131069, 393217, 0, 131070, 393217, 0, 13107
 script = ExtResource("2_htqlw")
 is_hub = true
 
-[node name="Door" parent="." node_paths=PackedStringArray("exit_dialogue") instance=ExtResource("3_3yek6")]
+[node name="Door" parent="." instance=ExtResource("3_3yek6")]
 position = Vector2(181.333, 120)
 destination_name = "level_1"
-exit_dialogue = NodePath("../Level1Dialogue")
 
-[node name="Door2" parent="." node_paths=PackedStringArray("exit_dialogue") instance=ExtResource("3_3yek6")]
+[node name="Door2" parent="." instance=ExtResource("3_3yek6")]
 position = Vector2(373.333, 72)
 destination_name = "level_2"
-exit_dialogue = NodePath("../Level2Dialogue")
 
-[node name="Door3" parent="." node_paths=PackedStringArray("exit_dialogue") instance=ExtResource("3_3yek6")]
+[node name="Door3" parent="." instance=ExtResource("3_3yek6")]
 position = Vector2(437.333, 120)
 destination_name = "level_3"
-exit_dialogue = NodePath("../Level3Dialogue")
 
 [node name="DummyDoor" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -39,21 +35,3 @@ texture = ExtResource("4_t23qh")
 position = Vector2(544, 40)
 destination_name = "win"
 card_requirement = 6
-
-[node name="Level1Dialogue" parent="." instance=ExtResource("5_djljk")]
-position = Vector2(18.6667, 312)
-speakers = Array[String](["Millie", "Speaker on the wall", "Millie"])
-texts = Array[String](["do most job applications involve pits of spikes?", "we prefer to call them \"failure deterrents\".", "*sigh* I do really need this job..."])
-durations = Array[int]([9, 9, 9])
-
-[node name="Level2Dialogue" parent="." instance=ExtResource("5_djljk")]
-position = Vector2(114.667, 312)
-speakers = Array[String](["Millie", "Speaker on the wall", "Millie", "Speaker on the wall"])
-texts = Array[String](["What exactly does this company do, anyway? The job posting was pretty vague.", "Work!", "...what kind of work?", "The productive kind!"])
-durations = Array[int]([6, 6, 6, 6])
-
-[node name="Level3Dialogue" parent="." instance=ExtResource("5_djljk")]
-position = Vector2(205.333, 314.667)
-speakers = Array[String](["Speaker on the wall", "Millie"])
-texts = Array[String](["Success in this room is dependent on your ability to build and maintain your momentum. It is recommended to repeatedly jump and dive in order to build speed quickly.", "Nifty. I got this!"])
-durations = Array[int]([12, 6])

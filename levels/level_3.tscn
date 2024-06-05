@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://wutbrfhyfn20"]
+[gd_scene load_steps=6 format=3 uid="uid://wutbrfhyfn20"]
 
 [ext_resource type="TileSet" uid="uid://chc0o8so6nq76" path="res://levels/tiles.tres" id="1_r4tgk"]
 [ext_resource type="Script" path="res://levels/level.gd" id="2_yl6ra"]
 [ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://door.tscn" id="3_r7nok"]
-[ext_resource type="PackedScene" uid="uid://qmx34ogunwbb" path="res://dialogue.tscn" id="4_vhu7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_baueo"]
 size = Vector2(16, 64)
@@ -47,35 +46,11 @@ position = Vector2(0, 8)
 destination_name = "hub"
 exit_location = Vector2(1312, 360)
 
-[node name="Door2" parent="." node_paths=PackedStringArray("exit_dialogue") instance=ExtResource("3_r7nok")]
+[node name="Door2" parent="." instance=ExtResource("3_r7nok")]
 position = Vector2(-224, 136)
 destination_name = "hub"
-exit_dialogue = NodePath("../DialogueSpike2")
 exit_location = Vector2(1312, 360)
-
-[node name="Dialogue" parent="." instance=ExtResource("4_vhu7e")]
-position = Vector2(2626.67, 0)
-speakers = Array[String](["Millie", "Speaker on the wall"])
-texts = Array[String](["Whats with the spikes?", "With enough momentum, you could potentially find a shortcut on the other side."])
-durations = Array[int]([6, 16])
-
-[node name="CollisionShape2D" parent="Dialogue" index="0"]
-position = Vector2(3.16675, -39.5)
-
-[node name="DialogueSpike" parent="." instance=ExtResource("4_vhu7e")]
-position = Vector2(2770.67, -312)
-speakers = Array[String](["Speaker on the wall"])
-texts = Array[String](["Do mind the failure deterrents."])
-durations = Array[int]([6])
-
-[node name="DialogueSpike2" parent="." instance=ExtResource("4_vhu7e")]
-position = Vector2(-341.333, 128)
-speakers = Array[String](["Millie"])
-texts = Array[String](["I'm doing pretty well!"])
-durations = Array[int]([6])
 
 [connection signal="body_entered" from="Start" to="." method="_on_start_body_entered"]
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
-
-[editable path="Dialogue"]

@@ -56,6 +56,8 @@ func load_data_from_save(data: Dictionary):
 		met_med_par = data[name + "_met_med_par"]
 	if data.has(name + "_met_high_par"):
 		met_high_par = data[name + "_met_high_par"]
+	if not get_tree():
+		return
 	for child in get_tree().get_nodes_in_group("dialogue"):
 		if data.has(child.name + "has_seen"):
 			child.has_seen = data[child.name + "has_seen"]
