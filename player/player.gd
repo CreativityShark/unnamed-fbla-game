@@ -50,4 +50,5 @@ func handle_input():
 		current_state.on_exit(self)
 		current_state = new_state
 		current_state.on_enter(self)
+		current_state.animate_on_enter($AnimatedSprite2D, self)
 
