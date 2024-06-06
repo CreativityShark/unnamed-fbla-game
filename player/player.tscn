@@ -1,8 +1,10 @@
-[gd_scene load_steps=56 format=3 uid="uid://c83barpmo8nsi"]
+[gd_scene load_steps=58 format=3 uid="uid://c83barpmo8nsi"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_hhsf4"]
 [ext_resource type="Texture2D" uid="uid://bjw02i0kvxnoh" path="res://art/player/millie_dive.png" id="2_canna"]
+[ext_resource type="Texture2D" uid="uid://bq7w7qee15dvm" path="res://art/player/ponytail_segment.png" id="2_ip264"]
 [ext_resource type="Texture2D" uid="uid://c5xjiayu8nta3" path="res://art/player/millie_idle.png" id="2_x0nee"]
+[ext_resource type="Script" path="res://player/ponytail.gd" id="3_5aa55"]
 [ext_resource type="Script" path="res://player/standing_state.gd" id="3_ifjai"]
 [ext_resource type="Texture2D" uid="uid://d2p4nqcwe1jol" path="res://art/player/millie_fall.png" id="3_omkby"]
 [ext_resource type="Script" path="res://player/jumping_state.gd" id="4_3s4q8"]
@@ -12,8 +14,8 @@
 [ext_resource type="Script" path="res://player/pounding_state.gd" id="6_7sqp1"]
 [ext_resource type="Texture2D" uid="uid://brj68nobd0a6" path="res://art/player/millie_pound.png" id="6_fj3a0"]
 [ext_resource type="Texture2D" uid="uid://7rfwr0abdx2p" path="res://art/player/millie_run.png" id="7_jdefd"]
-[ext_resource type="Texture2D" path="res://art/player/millie_fall_transition.png" id="8_e1hdx"]
-[ext_resource type="Texture2D" path="res://art/player/millie_squat.png" id="9_ci0h8"]
+[ext_resource type="Texture2D" uid="uid://dton20v6apa70" path="res://art/player/millie_fall_transition.png" id="8_e1hdx"]
+[ext_resource type="Texture2D" uid="uid://csc7muowsrhtr" path="res://art/player/millie_squat.png" id="9_ci0h8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpdty"]
 atlas = ExtResource("2_canna")
@@ -345,15 +347,27 @@ scale = Vector2(0.25, 0.25)
 script = ExtResource("1_hhsf4")
 metadata/_edit_group_ = true
 
+[node name="PonytailBase" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-16, -56)
+scale = Vector2(8, 8)
+texture = ExtResource("2_ip264")
+script = ExtResource("3_5aa55")
+ponytail_length = 4
+step = 45
+
+[node name="PonytailEnd" type="Sprite2D" parent="PonytailBase"]
+texture_filter = 1
+texture = ExtResource("2_ip264")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_4tyf8")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_7n52m")
 
