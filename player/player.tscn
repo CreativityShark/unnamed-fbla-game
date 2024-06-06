@@ -353,7 +353,7 @@ position = Vector2(-16, -56)
 scale = Vector2(8, 8)
 texture = ExtResource("2_ip264")
 script = ExtResource("3_5aa55")
-ponytail_length = 4
+ponytail_length = 2
 step = 45
 
 [node name="PonytailEnd" type="Sprite2D" parent="PonytailBase"]
