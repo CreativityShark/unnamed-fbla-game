@@ -30,6 +30,8 @@ func _process(delta):
 		get_tree().quit()
 
 
+# Pre: A file exists at user://epic.save and it is foratted as proper JSON
+# Post: save_data will contain data from the save file
 func load_save():
 	var save_file = FileAccess.open("user://epic.save", FileAccess.READ)
 	var json = JSON.new()
@@ -52,6 +54,8 @@ func save():
 	print("saved!")
 
 
+# pre: 
+# post: the data returned by the current level is put into save_data
 func save_level_data():
 	if current_level != null:
 		var data = current_level.get_data_to_save()
