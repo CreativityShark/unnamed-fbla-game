@@ -33,7 +33,9 @@ func _process(delta):
 # Pre: A file exists at user://epic.save and it is foratted as proper JSON
 # Post: save_data will contain data from the save file
 func load_save():
+	assert(FileAccess.file_exists("user://epic.save"))
 	var save_file = FileAccess.open("user://epic.save", FileAccess.READ)
+	assert(save_file)
 	var json = JSON.new()
 	json.parse(save_file.get_as_text())
 	print(json.get_error_line())
@@ -48,10 +50,11 @@ func save():
 	save_data["Current Floor"] = current_floor_name
 	save_level_data()
 	
+	assert(FileAccess.file_exists("user://epic.save"))
 	var save_file = FileAccess.open("user://epic.save", FileAccess.WRITE_READ)
+	assert(save_file)
 	save_file.store_line(JSON.stringify(save_data, "\t"))
 	save_file.close()
-	print("saved!")
 
 
 # pre: 

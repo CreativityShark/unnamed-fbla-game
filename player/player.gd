@@ -14,6 +14,7 @@ static var DIVING_STATE = DivingState.new()
 
 var effective_gravity = GRAVITY
 var facing_left = false
+var ponytail_x = -16
 var current_state: State = STANDING_STATE
 
 @export_category("Card Progress")
@@ -25,8 +26,12 @@ func _process(delta):
 	
 	if sign(velocity.x) < 0:
 		$AnimatedSprite2D.flip_h = true
+		$PonytailBase.position.x = -ponytail_x
 	elif sign(velocity.x) > 0:
 		$AnimatedSprite2D.flip_h = false
+		$PonytailBase.position.x = ponytail_x
+	
+	$PonytailBase.animate_ponytail(velocity, Vector2(0, GRAVITY))
 
 
 func _physics_process(delta):
@@ -50,4 +55,5 @@ func handle_input():
 		current_state.on_exit(self)
 		current_state = new_state
 		current_state.on_enter(self)
+		current_state.animate_on_enter($AnimatedSprite2D, self)
 
