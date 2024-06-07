@@ -39,13 +39,13 @@ func _physics_process(delta):
 			print("emit!")
 
 
+# pre: met_*_par variables have values and get_tree() returns a value that isn't null
+# post: all save data for this level is returned
 func get_data_to_save():
 	var data = {}
 	data[name + "_met_low_par"] = met_low_par
 	data[name + "_met_med_par"] = met_med_par
 	data[name + "_met_high_par"] = met_high_par
-	for child in get_tree().get_nodes_in_group("dialogue"):
-		data[child.name + "has_seen"] = child.has_seen
 	return data
 
 
@@ -56,11 +56,6 @@ func load_data_from_save(data: Dictionary):
 		met_med_par = data[name + "_met_med_par"]
 	if data.has(name + "_met_high_par"):
 		met_high_par = data[name + "_met_high_par"]
-	if not get_tree():
-		return
-	for child in get_tree().get_nodes_in_group("dialogue"):
-		if data.has(child.name + "has_seen"):
-			child.has_seen = data[child.name + "has_seen"]
 
 
 func _on_start_body_entered(body):

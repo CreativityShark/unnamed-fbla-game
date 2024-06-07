@@ -73,7 +73,6 @@ func change_level(level_name: String, exit_location):
 	
 	level.player = $Player
 	level.change_level = Callable(self, "change_level")
-	level.show_dialogue = Callable($GUI, "display_dialogue")
 	level.harm_player.connect(Callable(self, "_on_level_harm_player"))
 	
 	$World.add_child(level)

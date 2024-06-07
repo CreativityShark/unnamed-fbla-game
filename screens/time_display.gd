@@ -28,6 +28,7 @@ func on_level_change(level: Level):
 
 
 func as_time(time: int):
+	assert(time >= 0)
 	return "%d:%02d" % [time / 60, time % 60]
 
 
