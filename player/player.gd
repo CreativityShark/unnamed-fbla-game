@@ -19,13 +19,26 @@ static var POUNDING_STATE = PoundingState.new()
 var effective_gravity = GRAVITY
 var facing_left = false
 var ponytail_x = -16
-var current_state: State = STANDING_STATE
+var current_state: State = FALLING_STATE
 
 @export_category("Card Progress")
 @export var card_count = 0
 
+func _ready():
+	STANDING_STATE.name = "StandingState"
+	add_child(STANDING_STATE)
+	FALLING_STATE.name = "FallingState"
+	add_child(FALLING_STATE)
+	JUMPING_STATE.name = "JumpingState"
+	add_child(JUMPING_STATE)
+	DIVING_STATE.name = "DivingState"
+	add_child(DIVING_STATE)
+	POUNDING_STATE.name = "PoundingState"
+	add_child(POUNDING_STATE)
+	current_state.on_enter(self)
 
-func _process(delta):
+
+func _process(_delta):
 	current_state.animate($AnimatedSprite2D, self)
 	
 	if sign(velocity.x) < 0:

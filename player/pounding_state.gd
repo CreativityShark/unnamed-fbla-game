@@ -18,5 +18,5 @@ func on_enter(player: Player):
 	player.velocity.y = player.JUMP_VELOCITY
 
 
-func animate(sprite: Node, player: Player):
+func animate(sprite: Node, _player: Player):
 	sprite.play("pound")

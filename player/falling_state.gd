@@ -1,7 +1,10 @@
 class_name FallingState
 extends State
 
-var can_jump = true
+
+func on_enter(_player: Player):
+	print("hi")
+
 
 
 func handle_input(player: Player):

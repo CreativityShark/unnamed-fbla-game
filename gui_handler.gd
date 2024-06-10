@@ -5,7 +5,6 @@ extends CanvasLayer
 func display(screen: Control):
 	self.add_child(screen)
 	assert(screen.is_in_group("screen"))
-	print(self.get_tree_string_pretty())
 
 
 func get_screen(name: String):
