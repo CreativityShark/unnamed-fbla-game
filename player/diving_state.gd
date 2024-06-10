@@ -9,7 +9,7 @@ func handle_input(player: Player):
 		return player.STANDING_STATE
 	
 	if Input.is_action_just_pressed("down"):
-		return PoundingState.new()
+		return player.FALLING_STATE
 	
 	return super(player)
 

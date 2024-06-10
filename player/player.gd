@@ -2,15 +2,19 @@ class_name Player
 extends CharacterBody2D
 
 
+@export_category("Physics")
 const SPEED = 300.0
 const MAX_SPEED = 1000.0
 const ACCELERATION = 10.0
 const JUMP_VELOCITY = -650.0
+@export var COYOTE_TIME_WINDOW = 0.5
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 static var STANDING_STATE = StandingState.new()
+static var FALLING_STATE = FallingState.new()
 static var JUMPING_STATE = JumpingState.new()
 static var DIVING_STATE = DivingState.new()
+static var POUNDING_STATE = PoundingState.new()
 
 var effective_gravity = GRAVITY
 var facing_left = false

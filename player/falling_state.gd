@@ -14,11 +14,9 @@ func handle_input(player: Player):
 			player.velocity.x = player.SPEED * direction
 	
 	if Input.is_action_just_pressed("up"):
-		#if can_jump:
-			#return player.JUMPING_STATE
 		return player.DIVING_STATE
 	if Input.is_action_just_pressed("down"):
-		return PoundingState.new()
+		return player.POUNDING_STATE
 
 
 func animate(sprite: Node, player: Player):
@@ -27,7 +25,3 @@ func animate(sprite: Node, player: Player):
 		sprite.play("jump")
 	else:
 		sprite.play("fall")
-
-
-func _on_coyote_timer_timeout():
-	can_jump = false

@@ -13,7 +13,7 @@ func handle_input(player: Player):
 		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
 	
 	if !player.is_on_floor():
-		return FallingState.new()
+		return player.FALLING_STATE
 	elif Input.is_action_pressed("up"):
 		return player.JUMPING_STATE
 
