@@ -7,7 +7,7 @@ func on_enter(_player: Player):
 
 
 
-func handle_input(player: Player):
+func handle_input(player: Player, delta):
 	if player.is_on_floor():
 		return player.STANDING_STATE
 	
@@ -20,6 +20,8 @@ func handle_input(player: Player):
 		return player.DIVING_STATE
 	if Input.is_action_just_pressed("down"):
 		return player.POUNDING_STATE
+	
+	super(player, delta)
 
 
 func animate(sprite: Node, player: Player):

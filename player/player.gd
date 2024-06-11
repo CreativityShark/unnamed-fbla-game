@@ -6,9 +6,11 @@ extends CharacterBody2D
 const SPEED = 300.0
 const MAX_SPEED = 1000.0
 const ACCELERATION = 10.0
-const JUMP_VELOCITY = -650.0
+@export var JUMP_VELOCITY = -650.0
+@export var DIVE_FORCE = 400
 @export var COYOTE_TIME_WINDOW = 0.5
-var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var gravity_reduction_factor = 0.5
+var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity") * 1.5
 
 static var STANDING_STATE = StandingState.new()
 static var FALLING_STATE = FallingState.new()
@@ -16,7 +18,6 @@ static var JUMPING_STATE = JumpingState.new()
 static var DIVING_STATE = DivingState.new()
 static var POUNDING_STATE = PoundingState.new()
 
-var effective_gravity = GRAVITY
 var facing_left = false
 var ponytail_x = -16
 var current_state: State = FALLING_STATE
@@ -52,13 +53,7 @@ func _process(_delta):
 
 
 func _physics_process(delta):
-	if not Input.is_action_pressed("up") and effective_gravity != GRAVITY:
-		effective_gravity = GRAVITY
-	
-	if not is_on_floor():
-		velocity.y += GRAVITY * delta
-	
-	handle_input()
+	handle_input(delta)
 	
 	move_and_slide()
 	
@@ -66,8 +61,8 @@ func _physics_process(delta):
 		facing_left = !facing_left
 
 
-func handle_input():
-	var new_state = current_state.handle_input(self)
+func handle_input(delta):
+	var new_state = current_state.handle_input(self, delta)
 	if new_state is State:
 		current_state.on_exit(self)
 		current_state = new_state

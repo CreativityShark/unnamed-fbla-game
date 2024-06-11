@@ -4,13 +4,13 @@ extends State
 const POUND_SPEED = 75.0
 
 
-func handle_input(player: Player):
+func handle_input(player: Player, delta):
 	player.velocity.y += POUND_SPEED
 	
 	if player.is_on_floor():
 		return player.STANDING_STATE
 	
-	return super(player)
+	super(player, delta)
 
 
 func on_enter(player: Player):

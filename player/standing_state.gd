@@ -5,7 +5,7 @@ var falling = false
 var timer: Timer
 
 
-func handle_input(player: Player):
+func handle_input(player: Player, delta):
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		if direction == sign(player.velocity.x):
@@ -22,6 +22,8 @@ func handle_input(player: Player):
 			return player.FALLING_STATE
 	if Input.is_action_pressed("up"):
 		return player.JUMPING_STATE
+	super(player, delta)
+
 
 func on_enter(player: Player):
 	timer = Timer.new()
