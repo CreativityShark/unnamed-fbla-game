@@ -7,7 +7,7 @@ func handle_input(player: Player, delta):
 		return player.FALLING_STATE
 	
 	# Half the effect of gravity
-	if not player.is_on_floor():
+	if not player.is_on_floor() and player.velocity.y < 0:
 		player.velocity.y -= player.GRAVITY * delta * player.gravity_reduction_factor
 	
 	return super(player, delta)
