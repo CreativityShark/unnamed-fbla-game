@@ -3,16 +3,20 @@ extends CharacterBody2D
 
 
 @export_category("Physics")
+@export_group("Running")
 @export var SPEED = 300.0
 @export var MAX_SPEED = 1000.0
 @export var ACCELERATION = 10.0
-@export var JUMP_VELOCITY = -650.0
-@export var DIVE_FORCE = 400
-@export var COYOTE_TIME_WINDOW = 0.5
+@export_group("Jumping")
+@export var JUMP_VELOCITY = -600.0
+@export var COYOTE_TIME_WINDOW = 0.25
 @export var GRAVITY_REDUCTION_FACTOR = 0.5
+@export_group("Diving")
+@export var DIVE_FORCE = 400
+@export_group("Sliding")
 @export var SLIDE_THRESHOLD = 300.0
-@export var SLIDE_GRACE_PERIOD = 3.0
-@export var SLIDE_GRACE_DECAY = 0.75
+@export var SLIDE_GRACE_PERIOD = 1.0
+@export var SLIDE_GRACE_DECAY = 1.5 
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity") * 1.5
 
 static var STANDING_STATE = StandingState.new()

@@ -350,9 +350,6 @@ size = Vector2(80, 104)
 position = Vector2(3, 0)
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_hhsf4")
-JUMP_VELOCITY = -600.0
-COYOTE_TIME_WINDOW = 0.25
-GRAVITY_REDUCTION_FACTOR = 0.4
 metadata/_edit_group_ = true
 
 [node name="PonytailBase" type="Sprite2D" parent="."]
