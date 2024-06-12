@@ -17,5 +17,6 @@ func on_enter(player: Player):
 	player.velocity.x += player.DIVE_FORCE * sign(player.velocity.x)
 
 
-func animate(sprite: Node, _player: Player):
+func animate(sprite: Node, player: Player):
+	super(sprite, player)
 	sprite.play("dive")

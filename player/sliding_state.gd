@@ -44,4 +44,5 @@ func _on_grace_timer_timeout():
 
 
 func animate(sprite: Node, player: Player):
+	super(sprite, player)
 	sprite.play("slide")
