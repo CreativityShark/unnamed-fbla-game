@@ -13,8 +13,6 @@ func handle_input(player: Player, delta):
 	
 	if Input.is_action_just_pressed("up"):
 		return player.DIVING_STATE
-	if Input.is_action_just_pressed("down"):
-		return player.POUNDING_STATE
 	
 	super(player, delta)
 

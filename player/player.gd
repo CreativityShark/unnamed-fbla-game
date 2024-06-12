@@ -19,7 +19,6 @@ static var STANDING_STATE = StandingState.new()
 static var FALLING_STATE = FallingState.new()
 static var JUMPING_STATE = JumpingState.new()
 static var DIVING_STATE = DivingState.new()
-static var POUNDING_STATE = PoundingState.new()
 static var SLIDING_STATE = SlidingState.new()
 
 var facing_left = false
@@ -38,8 +37,6 @@ func _ready():
 	add_child(JUMPING_STATE)
 	DIVING_STATE.name = "DivingState"
 	add_child(DIVING_STATE)
-	POUNDING_STATE.name = "PoundingState"
-	add_child(POUNDING_STATE)
 	SLIDING_STATE.name = "SlidingState"
 	add_child(SLIDING_STATE)
 	
