@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://c83barpmo8nsi"]
+[gd_scene load_steps=54 format=3 uid="uid://c83barpmo8nsi"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_hhsf4"]
 [ext_resource type="Texture2D" uid="uid://bjw02i0kvxnoh" path="res://art/player/millie_dive.png" id="2_canna"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://7rfwr0abdx2p" path="res://art/player/millie_run.png" id="7_jdefd"]
 [ext_resource type="Texture2D" uid="uid://dton20v6apa70" path="res://art/player/millie_fall_transition.png" id="8_e1hdx"]
 [ext_resource type="Texture2D" uid="uid://csc7muowsrhtr" path="res://art/player/millie_squat.png" id="9_ci0h8"]
+[ext_resource type="Texture2D" uid="uid://bjm5twiihs0s1" path="res://art/player/millie_slider.png" id="10_1flyp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpdty"]
 atlas = ExtResource("2_canna")
@@ -301,6 +302,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("10_1flyp")
+}],
+"loop": true,
+"name": &"slide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bxk8r")
 }, {
 "duration": 1.0,
@@ -343,7 +352,6 @@ scale = Vector2(0.25, 0.25)
 script = ExtResource("1_hhsf4")
 JUMP_VELOCITY = -500.0
 COYOTE_TIME_WINDOW = 0.25
-gravity_reduction_factor = 0.65
 metadata/_edit_group_ = true
 
 [node name="PonytailBase" type="Sprite2D" parent="."]
@@ -363,8 +371,9 @@ texture = ExtResource("2_ip264")
 texture_filter = 1
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_4tyf8")
-animation = &"idle"
+animation = &"slide"
 autoplay = "idle"
+frame_progress = 0.217724
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)

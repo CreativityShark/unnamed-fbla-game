@@ -3,13 +3,16 @@ extends CharacterBody2D
 
 
 @export_category("Physics")
-const SPEED = 300.0
-const MAX_SPEED = 1000.0
-const ACCELERATION = 10.0
+@export var SPEED = 300.0
+@export var MAX_SPEED = 1000.0
+@export var ACCELERATION = 10.0
 @export var JUMP_VELOCITY = -650.0
 @export var DIVE_FORCE = 400
 @export var COYOTE_TIME_WINDOW = 0.5
-@export var gravity_reduction_factor = 0.5
+@export var GRAVITY_REDUCTION_FACTOR = 0.5
+@export var SLIDE_THRESHOLD = 300.0
+@export var SLIDE_GRACE_PERIOD = 3.0
+@export var SLIDE_GRACE_DECAY = 0.75
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity") * 1.5
 
 static var STANDING_STATE = StandingState.new()
@@ -17,6 +20,7 @@ static var FALLING_STATE = FallingState.new()
 static var JUMPING_STATE = JumpingState.new()
 static var DIVING_STATE = DivingState.new()
 static var POUNDING_STATE = PoundingState.new()
+static var SLIDING_STATE = SlidingState.new()
 
 var facing_left = false
 var ponytail_x = -16
@@ -36,6 +40,9 @@ func _ready():
 	add_child(DIVING_STATE)
 	POUNDING_STATE.name = "PoundingState"
 	add_child(POUNDING_STATE)
+	SLIDING_STATE.name = "SlidingState"
+	add_child(SLIDING_STATE)
+	
 	current_state.on_enter(self)
 
 

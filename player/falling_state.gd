@@ -2,11 +2,6 @@ class_name FallingState
 extends State
 
 
-func on_enter(_player: Player):
-	print("hi")
-
-
-
 func handle_input(player: Player, delta):
 	if player.is_on_floor():
 		return player.STANDING_STATE

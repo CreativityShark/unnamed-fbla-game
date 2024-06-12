@@ -6,6 +6,22 @@ var timer: Timer
 
 
 func handle_input(player: Player, delta):
+	set_x_velocity(player, delta)
+	
+	if !player.is_on_floor():
+		if timer.is_stopped():
+			timer.start(player.COYOTE_TIME_WINDOW)
+		if falling:
+			return player.FALLING_STATE
+	if Input.is_action_just_pressed("up"):
+		return player.JUMPING_STATE
+	elif Input.is_action_just_pressed("down") and abs(player.velocity.x) >= player.SLIDE_THRESHOLD and not already_sliding():
+		return player.SLIDING_STATE
+	
+	super(player, delta)
+
+
+func set_x_velocity(player: Player, delta):
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		if direction == sign(player.velocity.x):
@@ -14,15 +30,10 @@ func handle_input(player: Player, delta):
 			player.velocity.x = player.SPEED * direction
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
-	
-	if !player.is_on_floor():
-		if timer.is_stopped():
-			timer.start(player.COYOTE_TIME_WINDOW)
-		if falling:
-			return player.FALLING_STATE
-	if Input.is_action_pressed("up"):
-		return player.JUMPING_STATE
-	super(player, delta)
+
+
+func already_sliding():
+	return false
 
 
 func on_enter(player: Player):
@@ -43,6 +54,7 @@ func _on_coyote_timer_timeout():
 
 
 func animate(sprite: Node, player: Player):
+	super(sprite, player)
 	if player.velocity.x == 0:
 		sprite.play("idle")
 	else:
