@@ -19,14 +19,12 @@ func handle_input(player: Player):
 		return player.DIVING_STATE
 	if Input.is_action_just_pressed("down"):
 		return PoundingState.new()
-
-
-func animate(sprite: Node, player: Player):
-	super(sprite, player)
+	
+	# TEMPORARY SOLUTION UNTIL MERGE, WHERE ALL STATES ARE STATIC AND HANDLER CAN BE SET IN PLAYER.GD
 	if player.velocity.y < 0:
-		sprite.play("jump")
+		player.animation_handler.play("jump")
 	else:
-		sprite.play("fall")
+		player.animation_handler.play("fall")
 
 
 func _on_coyote_timer_timeout():

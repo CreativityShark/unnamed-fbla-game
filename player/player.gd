@@ -12,6 +12,8 @@ static var STANDING_STATE = StandingState.new()
 static var JUMPING_STATE = JumpingState.new()
 static var DIVING_STATE = DivingState.new()
 
+var animation_handler = AnimationHandler.new()
+
 var effective_gravity = GRAVITY
 var facing_left = false
 var ponytail_x = -16
@@ -21,14 +23,22 @@ var current_state: State = STANDING_STATE
 @export var card_count = 0
 
 
-func _process(delta):
-	current_state.animate($AnimatedSprite2D, self)
+func _ready():
+	STANDING_STATE.animation_handler = animation_handler
+	JUMPING_STATE.animation_handler = animation_handler
+	DIVING_STATE.animation_handler = animation_handler
 	
+	animation_handler.name = "AnimationHandler"
+	animation_handler.sprite = $AnimatedSprite2D
+	add_child(animation_handler)
+
+
+func _process(delta):
 	if sign(velocity.x) < 0:
-		$AnimatedSprite2D.flip_h = true
+		animation_handler.face_left()
 		$PonytailBase.position.x = -ponytail_x
 	elif sign(velocity.x) > 0:
-		$AnimatedSprite2D.flip_h = false
+		animation_handler.face_right()
 		$PonytailBase.position.x = ponytail_x
 	
 	$PonytailBase.animate_ponytail(velocity, Vector2(0, GRAVITY))
@@ -55,5 +65,3 @@ func handle_input():
 		current_state.on_exit(self)
 		current_state = new_state
 		current_state.on_enter(self)
-		current_state.animate_on_enter($AnimatedSprite2D, self)
-
