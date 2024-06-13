@@ -32,6 +32,8 @@ func on_enter(player: Player):
 	in_grace = true
 	grace_timer.start()
 	
+	player.velocity.x = max(abs(player.velocity.x), player.MAX_SPEED) * sign(player.velocity.x)
+	
 	player.animation_handler.play("slide")
 
 

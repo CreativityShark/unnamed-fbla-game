@@ -15,7 +15,7 @@ extends CharacterBody2D
 @export var DIVE_FORCE = 400
 @export_group("Sliding")
 @export var SLIDE_THRESHOLD = 300.0
-@export var SLIDE_GRACE_PERIOD = 1.0
+@export var SLIDE_GRACE_PERIOD = 0.2
 @export var SLIDE_GRACE_DECAY = 1.5 
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity") * 1.5
 
