@@ -7,10 +7,9 @@ var queue = []
 
 func _process(delta):
 	assert(sprite != null)
-	if not sprite.is_playing():
+	if not sprite.is_playing() and not queue.is_empty():
 		var to_be_played = queue.pop_front()
-		assert(sprite.sprite_frames.has_animation(to_be_played))
-		sprite.play(to_be_played)
+		play(to_be_played)
 
 
 # pre: name is a string with the name of an animation of sprite
@@ -30,6 +29,10 @@ func play(name: String):
 # post: the animation that is currently playing is stopped
 func stop():
 	sprite.stop()
+
+
+func get_playing():
+	return sprite.animation 
 
 
 func face_left():
