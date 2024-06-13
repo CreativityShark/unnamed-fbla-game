@@ -2,31 +2,51 @@ class_name Player
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const MAX_SPEED = 1000.0
-const ACCELERATION = 10.0
-const JUMP_VELOCITY = -650.0
-var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export_category("Physics")
+@export_group("Running")
+@export var SPEED = 300.0
+@export var MAX_SPEED = 1000.0
+@export var ACCELERATION = 10.0
+@export_group("Jumping")
+@export var JUMP_VELOCITY = -600.0
+@export var COYOTE_TIME_WINDOW = 0.25
+@export var GRAVITY_REDUCTION_FACTOR = 0.5
+@export_group("Diving")
+@export var DIVE_FORCE = 400
+@export_group("Sliding")
+@export var SLIDE_THRESHOLD = 300.0
+@export var SLIDE_GRACE_PERIOD = 1.0
+@export var SLIDE_GRACE_DECAY = 1.5 
+var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity") * 1.5
 
 static var STANDING_STATE = StandingState.new()
+static var FALLING_STATE = FallingState.new()
 static var JUMPING_STATE = JumpingState.new()
 static var DIVING_STATE = DivingState.new()
+static var SLIDING_STATE = SlidingState.new()
 
 var animation_handler = AnimationHandler.new()
 
-var effective_gravity = GRAVITY
 var facing_left = false
 var ponytail_x = -16
-var current_state: State = STANDING_STATE
+var current_state: State = FALLING_STATE
 
 @export_category("Card Progress")
 @export var card_count = 0
 
-
 func _ready():
-	STANDING_STATE.animation_handler = animation_handler
-	JUMPING_STATE.animation_handler = animation_handler
-	DIVING_STATE.animation_handler = animation_handler
+	STANDING_STATE.name = "StandingState"
+	add_child(STANDING_STATE)
+	FALLING_STATE.name = "FallingState"
+	add_child(FALLING_STATE)
+	JUMPING_STATE.name = "JumpingState"
+	add_child(JUMPING_STATE)
+	DIVING_STATE.name = "DivingState"
+	add_child(DIVING_STATE)
+	SLIDING_STATE.name = "SlidingState"
+	add_child(SLIDING_STATE)
+	
+	current_state.on_enter(self)
 	
 	animation_handler.name = "AnimationHandler"
 	animation_handler.sprite = $AnimatedSprite2D
@@ -45,13 +65,7 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	if not Input.is_action_pressed("up") and effective_gravity != GRAVITY:
-		effective_gravity = GRAVITY
-	
-	if not is_on_floor():
-		velocity.y += GRAVITY * delta
-	
-	handle_input()
+	handle_input(delta)
 	
 	move_and_slide()
 	
@@ -59,8 +73,8 @@ func _physics_process(delta):
 		facing_left = !facing_left
 
 
-func handle_input():
-	var new_state = current_state.handle_input(self)
+func handle_input(delta):
+	var new_state = current_state.handle_input(self, delta)
 	if new_state is State:
 		current_state.on_exit(self)
 		current_state = new_state

@@ -5,17 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://bq7w7qee15dvm" path="res://art/player/ponytail_segment.png" id="2_ip264"]
 [ext_resource type="Texture2D" uid="uid://c5xjiayu8nta3" path="res://art/player/millie_idle.png" id="2_x0nee"]
 [ext_resource type="Script" path="res://player/ponytail.gd" id="3_5aa55"]
-[ext_resource type="Script" path="res://player/standing_state.gd" id="3_ifjai"]
 [ext_resource type="Texture2D" uid="uid://d2p4nqcwe1jol" path="res://art/player/millie_fall.png" id="3_omkby"]
-[ext_resource type="Script" path="res://player/jumping_state.gd" id="4_3s4q8"]
-[ext_resource type="Script" path="res://player/falling_state.gd" id="4_qywor"]
-[ext_resource type="Script" path="res://player/diving_state.gd" id="5_ekgwg"]
 [ext_resource type="Texture2D" uid="uid://cde3xp53ddp3y" path="res://art/player/millie_jump.png" id="5_nxvrc"]
-[ext_resource type="Script" path="res://player/pounding_state.gd" id="6_7sqp1"]
 [ext_resource type="Texture2D" uid="uid://brj68nobd0a6" path="res://art/player/millie_pound.png" id="6_fj3a0"]
 [ext_resource type="Texture2D" uid="uid://7rfwr0abdx2p" path="res://art/player/millie_run.png" id="7_jdefd"]
 [ext_resource type="Texture2D" uid="uid://dton20v6apa70" path="res://art/player/millie_fall_transition.png" id="8_e1hdx"]
 [ext_resource type="Texture2D" uid="uid://csc7muowsrhtr" path="res://art/player/millie_squat.png" id="9_ci0h8"]
+[ext_resource type="Texture2D" uid="uid://bjm5twiihs0s1" path="res://art/player/millie_slider.png" id="10_1flyp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpdty"]
 atlas = ExtResource("2_canna")
@@ -314,6 +310,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("10_1flyp")
+}],
+"loop": true,
+"name": &"slide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bxk8r")
 }, {
 "duration": 1.0,
@@ -351,6 +355,7 @@ animations = [{
 size = Vector2(80, 104)
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(3, 0)
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_hhsf4")
 metadata/_edit_group_ = true
@@ -372,28 +377,14 @@ texture = ExtResource("2_ip264")
 texture_filter = 1
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_4tyf8")
+<<<<<<< HEAD
 animation = &"transition_to_fall"
+=======
+animation = &"slide"
+>>>>>>> movement
 autoplay = "idle"
+frame_progress = 0.217724
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_7n52m")
-
-[node name="StandingState" type="Node" parent="."]
-script = ExtResource("3_ifjai")
-
-[node name="FallingState" type="Node" parent="."]
-script = ExtResource("4_qywor")
-
-[node name="CoyoteTimer" type="Timer" parent="FallingState"]
-
-[node name="JumpingState" type="Node" parent="."]
-script = ExtResource("4_3s4q8")
-
-[node name="DivingState" type="Node" parent="."]
-script = ExtResource("5_ekgwg")
-
-[node name="PoundingState" type="Node" parent="."]
-script = ExtResource("6_7sqp1")
-
-[connection signal="timeout" from="FallingState/CoyoteTimer" to="FallingState" method="_on_coyote_timer_timeout"]

@@ -1,21 +1,19 @@
 class_name DivingState
 extends State
 
-const DIVE_FORCE = 400.0
 
-
-func handle_input(player: Player):
+func handle_input(player: Player, delta):
 	if player.is_on_floor():
 		return player.STANDING_STATE
 	
 	if Input.is_action_just_pressed("down"):
-		return PoundingState.new()
+		return player.FALLING_STATE
 	
 	self.animation_handler.play("dive")
 	
-	return super(player)
+	return super(player, delta)
 
 
 func on_enter(player: Player):
-	player.velocity.y = player.JUMP_VELOCITY / 2
-	player.velocity.x += DIVE_FORCE * sign(player.velocity.x)
+	player.velocity.y = player.JUMP_VELOCITY
+	player.velocity.x += player.DIVE_FORCE * sign(player.velocity.x)

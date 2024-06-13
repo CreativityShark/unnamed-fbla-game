@@ -4,7 +4,7 @@ extends State
 const POUND_SPEED = 75.0
 
 
-func handle_input(player: Player):
+func handle_input(player: Player, delta):
 	player.velocity.y += POUND_SPEED
 	
 	if player.is_on_floor():
@@ -13,7 +13,7 @@ func handle_input(player: Player):
 	# TEMPORARY SOLUTION UNTIL MERGING WITH MAIN, WHERE ALL STATES ARE STATIC AND HANDLER CAN BE SET THERE
 	player.animation_handler.play("pound")
 	
-	return super(player)
+	return super(player, delta)
 
 
 func on_enter(player: Player):
