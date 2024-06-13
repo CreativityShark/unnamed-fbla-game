@@ -41,7 +41,7 @@ func _process(delta):
 		animation_handler.face_right()
 		$PonytailBase.position.x = ponytail_x
 	
-	$PonytailBase.animate_ponytail(velocity, Vector2(0, GRAVITY))
+	$PonytailBase.animate_ponytail(velocity * 5, Vector2(0, GRAVITY))
 
 
 func _physics_process(delta):
