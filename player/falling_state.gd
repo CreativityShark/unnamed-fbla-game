@@ -3,7 +3,9 @@ extends State
 
 
 func on_enter(player: Player):
-	player.animation_handler.play("fall")
+	var animation = player.animation_handler.get_playing()
+	if animation != "jump" and animation != "transtion_to_fall":
+		player.animation_handler.play("fall")
 
 
 func handle_input(player: Player, delta):
@@ -17,4 +19,9 @@ func handle_input(player: Player, delta):
 	
 	if Input.is_action_just_pressed("up"):
 		return player.DIVING_STATE
+	
+	# Allow animation to transition to fall if currently playing the jump animation
+	if player.velocity.y >= 0 and player.animation_handler.get_playing() == "jump":
+		player.animation_handler.stop()
+	
 	super(player, delta)

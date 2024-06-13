@@ -9,11 +9,11 @@ func handle_input(player: Player, delta):
 	if Input.is_action_just_pressed("down"):
 		return player.FALLING_STATE
 	
-	self.animation_handler.play("dive")
-	
 	return super(player, delta)
 
 
 func on_enter(player: Player):
 	player.velocity.y = player.JUMP_VELOCITY
 	player.velocity.x += player.DIVE_FORCE * sign(player.velocity.x)
+	
+	player.animation_handler.play("dive")

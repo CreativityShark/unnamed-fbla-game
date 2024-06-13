@@ -21,7 +21,7 @@ var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity") * 1.5
 
 static var STANDING_STATE = StandingState.new()
 static var FALLING_STATE = FallingState.new()
-static var JUMPING_STATE = JumpingState.new()
+static var JUMPING_STATE = JumpingState.new() 
 static var DIVING_STATE = DivingState.new()
 static var SLIDING_STATE = SlidingState.new()
 
@@ -46,11 +46,11 @@ func _ready():
 	SLIDING_STATE.name = "SlidingState"
 	add_child(SLIDING_STATE)
 	
-	current_state.on_enter(self)
-	
 	animation_handler.name = "AnimationHandler"
 	animation_handler.sprite = $AnimatedSprite2D
 	add_child(animation_handler)
+	
+	current_state.on_enter(self)
 
 
 func _process(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://c83barpmo8nsi"]
+[gd_scene load_steps=56 format=3 uid="uid://dr5lx8uxw4wua"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_hhsf4"]
 [ext_resource type="Texture2D" uid="uid://bjw02i0kvxnoh" path="res://art/player/millie_dive.png" id="2_canna"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://7rfwr0abdx2p" path="res://art/player/millie_run.png" id="7_jdefd"]
 [ext_resource type="Texture2D" uid="uid://dton20v6apa70" path="res://art/player/millie_fall_transition.png" id="8_e1hdx"]
 [ext_resource type="Texture2D" uid="uid://csc7muowsrhtr" path="res://art/player/millie_squat.png" id="9_ci0h8"]
-[ext_resource type="Texture2D" uid="uid://bjm5twiihs0s1" path="res://art/player/millie_slider.png" id="10_1flyp"]
+[ext_resource type="Texture2D" uid="uid://bjm5twiihs0s1" path="res://art/player/millie_slider.png" id="10_2y38d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpdty"]
 atlas = ExtResource("2_canna")
@@ -310,7 +310,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_1flyp")
+"texture": ExtResource("10_2y38d")
 }],
 "loop": true,
 "name": &"slide",
@@ -355,7 +355,6 @@ animations = [{
 size = Vector2(80, 104)
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(3, 0)
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_hhsf4")
 metadata/_edit_group_ = true
@@ -377,13 +376,8 @@ texture = ExtResource("2_ip264")
 texture_filter = 1
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_4tyf8")
-<<<<<<< HEAD
-animation = &"transition_to_fall"
-=======
 animation = &"slide"
->>>>>>> movement
 autoplay = "idle"
-frame_progress = 0.217724
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)

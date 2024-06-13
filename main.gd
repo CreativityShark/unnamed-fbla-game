@@ -87,6 +87,8 @@ func change_level(level_name: String, exit_location):
 	else:
 		$Player.position = level.spawn_pos
 	
+	$Player.velocity = Vector2.ZERO
+	
 	if level.is_hub:
 		current_floor_name = level_name
 	

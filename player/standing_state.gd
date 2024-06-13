@@ -30,6 +30,11 @@ func set_x_velocity(player: Player, delta):
 			player.velocity.x = player.SPEED * direction
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
+	
+	if player.velocity.x == 0:
+		player.animation_handler.play("idle")
+	else:
+		player.animation_handler.play("run")
 
 
 func already_sliding():

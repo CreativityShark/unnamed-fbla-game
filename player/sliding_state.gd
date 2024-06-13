@@ -31,6 +31,8 @@ func on_enter(player: Player):
 	add_child(grace_timer)
 	in_grace = true
 	grace_timer.start()
+	
+	player.animation_handler.play("slide")
 
 
 func on_exit(player: Player):
@@ -41,8 +43,3 @@ func on_exit(player: Player):
 
 func _on_grace_timer_timeout():
 	in_grace = false
-
-
-func animate(sprite: Node, player: Player):
-	super(sprite, player)
-	sprite.play("slide")
