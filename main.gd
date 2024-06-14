@@ -20,6 +20,12 @@ func _ready():
 	change_level(current_floor_name, null)
 	
 	ready_gui()
+	
+	var camera = Camera.new()
+	camera.player = $Player
+	camera.name = "Camera"
+	camera.process_mode = PROCESS_MODE_PAUSABLE
+	add_child(camera)
 
 
 func _process(delta):
