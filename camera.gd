@@ -7,19 +7,26 @@ var target = Vector2.ZERO
 var screen_offset: Vector2
 @export var deadzone_size = 75 
 var has_left_deadzone = false
+var y_rate = 0.03
 
 
 func _ready():
 	screen_offset = get_viewport_rect().size * 0.5
-	get_viewport().canvas_transform.origin = -(player.position - screen_offset)
+	reset_camera()
 
 
 func _process(delta):
 	if can_move_target():
-		target = player.position
-		target -= screen_offset 
+		target.x = player.position.x - screen_offset.x
+		handle_y()
 	
-	get_viewport().canvas_transform.origin = (0.8 * get_viewport().canvas_transform.origin) + (0.2 * -target) 
+	get_viewport().canvas_transform.origin.x += (-target.x - get_viewport().canvas_transform.origin.x) * 0.1
+	get_viewport().canvas_transform.origin.y += (-target.y - get_viewport().canvas_transform.origin.y) * y_rate
+
+
+func handle_y():
+	if (player.is_on_floor()):
+		target.y = player.position.y - screen_offset.y
 
 
 func can_move_target():
@@ -34,3 +41,10 @@ func can_move_target():
 			has_left_deadzone = true
 			return true 
 		return false
+
+
+func reset_camera():
+	if get_viewport() == null:
+		return
+	get_viewport().canvas_transform.origin = -(player.position - screen_offset)
+	target = player.position - screen_offset
