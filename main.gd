@@ -17,8 +17,6 @@ func _ready():
 	if save_data.has("Current Floor"):
 		current_floor_name = save_data["Current Floor"]
 	
-	$Camera2D.player = $Player
-	
 	change_level(current_floor_name, null)
 	
 	ready_gui()

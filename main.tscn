@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbwjmgayp4ckw"]
+[gd_scene load_steps=4 format=3 uid="uid://dbwjmgayp4ckw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_x5j0v"]
-[ext_resource type="PackedScene" uid="uid://c83barpmo8nsi" path="res://player/player.tscn" id="3_i020s"]
-[ext_resource type="Script" path="res://camera.gd" id="4_f37lq"]
+[ext_resource type="PackedScene" uid="uid://dr5lx8uxw4wua" path="res://player/player.tscn" id="3_i020s"]
 [ext_resource type="Script" path="res://gui_handler.gd" id="15_ilew8"]
 
 [node name="Main" type="Node"]
@@ -12,12 +11,6 @@ current_floor_name = "tutorial"
 
 [node name="World" type="Node2D" parent="."]
 process_mode = 1
-
-[node name="Camera2D" type="Camera2D" parent="."]
-process_mode = 3
-position_smoothing_enabled = true
-position_smoothing_speed = 3.0
-script = ExtResource("4_f37lq")
 
 [node name="Player" parent="." instance=ExtResource("3_i020s")]
 process_mode = 1
