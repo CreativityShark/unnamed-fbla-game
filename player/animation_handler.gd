@@ -21,9 +21,9 @@ func queue_animation(name: String):
 
 # pre: name is a string wih the name of an animation of sprite
 # post: the animation is played immediately, skipping the queue
-func play(name: String):
+func play(name: String, speed = 1.0):
 	assert(sprite.sprite_frames.has_animation(name))
-	sprite.play(name)
+	sprite.play(name, speed)
 
 
 # post: the animation that is currently playing is stopped

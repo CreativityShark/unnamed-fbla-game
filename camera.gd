@@ -7,6 +7,7 @@ var target = Vector2.ZERO
 var screen_offset: Vector2
 @export var deadzone_size = 75 
 var has_left_deadzone = false
+var x_rate = 0.3
 var y_rate = 0.03
 
 
@@ -17,11 +18,24 @@ func _ready():
 
 func _process(delta):
 	if can_move_target():
-		target.x = player.position.x - screen_offset.x
+		handle_x()
 		handle_y()
 	
-	get_viewport().canvas_transform.origin.x += (-target.x - get_viewport().canvas_transform.origin.x) * 0.1
+	#if not get_viewport().get_visible_rect().has_point(player.position):
+		#x_rate = 1
+		#y_rate = 1
+	#else:
+		#x_rate = 0.15
+		#y_rate = 0.03
+	
+	get_viewport().canvas_transform.origin.x += (-target.x - get_viewport().canvas_transform.origin.x) * x_rate
 	get_viewport().canvas_transform.origin.y += (-target.y - get_viewport().canvas_transform.origin.y) * y_rate
+
+
+func handle_x():
+	target.x = player.position.x - screen_offset.x
+	#if player.velocity.x != 0:
+		#target.x += screen_offset.x * 0.5 * Input.get_axis("left", "right")
 
 
 func handle_y():

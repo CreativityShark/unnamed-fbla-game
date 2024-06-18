@@ -34,7 +34,8 @@ func set_x_velocity(player: Player, delta):
 	if player.velocity.x == 0:
 		player.animation_handler.play("idle")
 	else:
-		player.animation_handler.play("run")
+		# Playback speed equals x velocity / 600, but with a clamped between 0.4 and 1.2
+		player.animation_handler.play("run", max(min(abs(player.velocity.x / 600), 1.2), 0.4))
 
 
 func already_sliding():
