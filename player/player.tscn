@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dr5lx8uxw4wua"]
+[gd_scene load_steps=56 format=3 uid="uid://dr5lx8uxw4wua"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_hhsf4"]
 [ext_resource type="Texture2D" uid="uid://bjw02i0kvxnoh" path="res://art/player/millie_dive.png" id="2_canna"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://dton20v6apa70" path="res://art/player/millie_fall_transition.png" id="8_e1hdx"]
 [ext_resource type="Texture2D" uid="uid://csc7muowsrhtr" path="res://art/player/millie_squat.png" id="9_ci0h8"]
 [ext_resource type="Texture2D" uid="uid://bjm5twiihs0s1" path="res://art/player/millie_slider.png" id="10_2y38d"]
-[ext_resource type="Texture2D" uid="uid://be241vy3mwrmw" path="res://art/spark.png" id="13_oj4c2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpdty"]
 atlas = ExtResource("2_canna")
@@ -355,16 +354,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7n52m"]
 size = Vector2(80, 104)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t5plq"]
-particles_animation = true
-particles_anim_h_frames = 2
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="Curve" id="Curve_7j2iy"]
-_data = [Vector2(0.00662252, 0.991356), 0.0, 0.0, 0, 0, Vector2(0.496689, 1), 0.0, 0.0, 0, 0, Vector2(0.990066, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_hhsf4")
@@ -393,26 +382,3 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_7n52m")
-
-[node name="SlidingParticles" type="CPUParticles2D" parent="."]
-show_behind_parent = true
-texture_filter = 1
-material = SubResource("CanvasItemMaterial_t5plq")
-position = Vector2(0, 64)
-emitting = false
-amount = 3
-lifetime = 0.05
-explosiveness = 0.24
-texture = ExtResource("13_oj4c2")
-direction = Vector2(0, -1)
-spread = 20.0
-gravity = Vector2(0, 490)
-initial_velocity_min = 1000.0
-initial_velocity_max = 1500.0
-angular_velocity_max = 360.0
-scale_amount_min = 2.0
-scale_amount_max = 4.0
-scale_amount_curve = SubResource("Curve_7j2iy")
-anim_speed_min = 1.0
-anim_speed_max = 1.0
-anim_offset_max = 1.0
