@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbwjmgayp4ckw"]
+[gd_scene load_steps=5 format=3 uid="uid://dbwjmgayp4ckw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_x5j0v"]
 [ext_resource type="PackedScene" uid="uid://dr5lx8uxw4wua" path="res://player/player.tscn" id="3_i020s"]
+[ext_resource type="Script" path="res://camera.gd" id="4_qwwrp"]
 [ext_resource type="Script" path="res://gui_handler.gd" id="15_ilew8"]
 
 [node name="Main" type="Node"]
@@ -21,3 +22,7 @@ process_mode = 3
 offset = Vector2(960, 540)
 transform = Transform2D(1, 0, 0, 1, 960, 540)
 script = ExtResource("15_ilew8")
+
+[node name="Camera" type="Node2D" parent="."]
+process_mode = 1
+script = ExtResource("4_qwwrp")

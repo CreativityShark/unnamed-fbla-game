@@ -3,7 +3,6 @@ extends Node
 @export var current_floor_name: String
 var current_level: Level
 var save_data = {}
-var camera = Camera.new()
 
 
 func _ready():
@@ -18,14 +17,11 @@ func _ready():
 	if save_data.has("Current Floor"):
 		current_floor_name = save_data["Current Floor"]
 	
+	$Camera.player = $Player
+	
 	change_level(current_floor_name, null)
 	
 	ready_gui()
-	
-	camera.player = $Player
-	camera.name = "Camera"
-	camera.process_mode = PROCESS_MODE_PAUSABLE
-	add_child(camera)
 
 
 func _process(delta):
@@ -93,7 +89,7 @@ func change_level(level_name: String, exit_location):
 	
 	$Player.velocity = Vector2.ZERO
 	
-	camera.reset_camera()
+	$Camera.reset_camera()
 	
 	if level.is_hub:
 		current_floor_name = level_name
@@ -108,7 +104,7 @@ func change_level(level_name: String, exit_location):
 func reset_level():
 	$Player.velocity = Vector2.ZERO
 	$Player.position = current_level.spawn_pos
-	camera.reset_camera()
+	$Camera.reset_camera()
 	current_level.reset_time()
 
 

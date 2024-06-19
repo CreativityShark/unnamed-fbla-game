@@ -58,7 +58,7 @@ func can_move_target():
 
 
 func reset_camera():
-	if get_viewport() == null:
+	if get_viewport() == null or player == null:
 		return
 	get_viewport().canvas_transform.origin = -(player.position - screen_offset)
 	target = player.position - screen_offset
