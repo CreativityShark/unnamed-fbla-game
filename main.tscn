@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbwjmgayp4ckw"]
+[gd_scene load_steps=10 format=3 uid="uid://dbwjmgayp4ckw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_x5j0v"]
 [ext_resource type="PackedScene" uid="uid://dr5lx8uxw4wua" path="res://player/player.tscn" id="3_i020s"]
 [ext_resource type="Script" path="res://camera.gd" id="4_qwwrp"]
+[ext_resource type="Texture2D" uid="uid://cdqnrkup4m6v" path="res://art/bg/layer_4.png" id="5_46o88"]
+[ext_resource type="Script" path="res://bg.gd" id="5_m5xhl"]
+[ext_resource type="Texture2D" uid="uid://5mfvwxhku21f" path="res://art/bg/layer_1.png" id="6_18wr5"]
+[ext_resource type="Texture2D" uid="uid://dpm14ja6l0qlx" path="res://art/bg/layer_3.png" id="6_eqrde"]
+[ext_resource type="Texture2D" uid="uid://duvcqmebr5rcx" path="res://art/bg/layer_2.png" id="7_giuy3"]
 [ext_resource type="Script" path="res://gui_handler.gd" id="15_ilew8"]
 
 [node name="Main" type="Node"]
@@ -26,3 +31,71 @@ script = ExtResource("15_ilew8")
 [node name="Camera" type="Node2D" parent="."]
 process_mode = 1
 script = ExtResource("4_qwwrp")
+
+[node name="Background" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("5_m5xhl")
+
+[node name="Foreground" type="Sprite2D" parent="Background"]
+z_index = -4
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("6_18wr5")
+region_enabled = true
+region_rect = Rect2(0, 0, 2880, 540)
+
+[node name="ColorRect" type="ColorRect" parent="Background/Foreground"]
+offset_left = -1440.0
+offset_top = 264.0
+offset_right = 1440.0
+offset_bottom = 1228.0
+color = Color(0, 0, 0, 1)
+
+[node name="Buildings" type="Sprite2D" parent="Background"]
+z_index = -5
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("7_giuy3")
+region_enabled = true
+region_rect = Rect2(0, 0, 2880, 540)
+
+[node name="ColorRect" type="ColorRect" parent="Background/Buildings"]
+offset_left = -1440.0
+offset_top = 264.0
+offset_right = 1440.0
+offset_bottom = 1228.0
+color = Color(0.0941176, 0.109804, 0.129412, 1)
+
+[node name="Hills" type="Sprite2D" parent="Background"]
+z_index = -6
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("6_eqrde")
+region_enabled = true
+region_rect = Rect2(0, 0, 2880, 540)
+
+[node name="ColorRect" type="ColorRect" parent="Background/Hills"]
+offset_left = -1440.0
+offset_top = 264.0
+offset_right = 1440.0
+offset_bottom = 1228.0
+color = Color(0.164706, 0.196078, 0.223529, 1)
+
+[node name="Sky" type="Sprite2D" parent="Background"]
+z_index = -7
+scale = Vector2(2, 2)
+texture = ExtResource("5_46o88")
+
+[node name="ColorRect" type="ColorRect" parent="Background/Sky"]
+offset_left = -480.0
+offset_top = 268.0
+offset_right = 480.0
+offset_bottom = 1228.0
+color = Color(0.87451, 0.501961, 0.376471, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Background/Sky"]
+offset_left = -480.0
+offset_top = -1228.0
+offset_right = 480.0
+offset_bottom = -268.0
+color = Color(0.619608, 0.737255, 0.85098, 1)
