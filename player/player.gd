@@ -62,6 +62,11 @@ func _process(delta):
 		$PonytailBase.position.x = ponytail_x
 	
 	$PonytailBase.animate_ponytail(velocity * 5, Vector2(0, GRAVITY))
+	
+	if current_state == SLIDING_STATE:
+		$SlidingParticles.emitting = true
+	else:
+		$SlidingParticles.emitting = false
 
 
 func _physics_process(delta):

@@ -30,8 +30,3 @@ destination_name = "level_3"
 texture_filter = 1
 position = Vector2(0, 8)
 texture = ExtResource("4_t23qh")
-
-[node name="WinDoor" parent="." instance=ExtResource("3_3yek6")]
-position = Vector2(544, 40)
-destination_name = "win"
-card_requirement = 6
