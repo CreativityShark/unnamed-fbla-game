@@ -68,6 +68,8 @@ func save_level_data():
 		current_level.queue_free()
 
 
+# Pre: level_name refers to the id of a level in res://levels/
+# Post: the level will be loaded and added to the scene tree
 func change_level(level_name: String, exit_location):
 	var level_path = load("res://levels/" + level_name + ".tscn")
 	var level = level_path.instantiate()
@@ -102,10 +104,7 @@ func change_level(level_name: String, exit_location):
 
 
 func reset_level():
-	$Player.velocity = Vector2.ZERO
-	$Player.position = current_level.spawn_pos
-	$Camera.reset_camera()
-	current_level.reset_time()
+	change_level(current_level.id, null)
 
 
 func ready_gui():

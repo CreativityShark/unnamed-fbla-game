@@ -6,6 +6,8 @@ extends TileMap
 @export var med_par = 0
 @export var high_par = 0
 @export var spawn_pos = Vector2(0, 0)
+# ID should be the scene's filename (e.g. the ID for level_1.tscn would be level_1)
+@export var id: String
 var met_low_par = false
 var met_med_par = false
 var met_high_par = false
@@ -43,19 +45,19 @@ func _physics_process(delta):
 # post: all save data for this level is returned
 func get_data_to_save():
 	var data = {}
-	data[name + "_met_low_par"] = met_low_par
-	data[name + "_met_med_par"] = met_med_par
-	data[name + "_met_high_par"] = met_high_par
+	data[id + "_met_low_par"] = met_low_par
+	data[id + "_met_med_par"] = met_med_par
+	data[id + "_met_high_par"] = met_high_par
 	return data
 
 
 func load_data_from_save(data: Dictionary):
-	if data.has(name + "_met_low_par"):
-		met_low_par = data[name + "_met_low_par"]
-	if data.has(name + "_met_med_par"):
-		met_med_par = data[name + "_met_med_par"]
-	if data.has(name + "_met_high_par"):
-		met_high_par = data[name + "_met_high_par"]
+	if data.has(id + "_met_low_par"):
+		met_low_par = data[id + "_met_low_par"]
+	if data.has(id + "_met_med_par"):
+		met_med_par = data[id + "_met_med_par"]
+	if data.has(id + "_met_high_par"):
+		met_high_par = data[id + "_met_high_par"]
 
 
 func _on_start_body_entered(body):

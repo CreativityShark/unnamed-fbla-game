@@ -33,6 +33,7 @@ script = ExtResource("2_2psdl")
 low_par = 7
 med_par = 10
 high_par = 15
+id = "level_1"
 
 [node name="Start" type="Area2D" parent="."]
 position = Vector2(53.3333, -13.3333)

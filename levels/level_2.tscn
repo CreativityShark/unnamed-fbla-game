@@ -26,6 +26,7 @@ script = ExtResource("2_jig30")
 low_par = 12
 med_par = 15
 high_par = 20
+id = "level_2"
 
 [node name="Start" type="Area2D" parent="."]
 position = Vector2(0, -5.33333)

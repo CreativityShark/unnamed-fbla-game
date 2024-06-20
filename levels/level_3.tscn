@@ -20,6 +20,7 @@ script = ExtResource("2_yl6ra")
 low_par = 15
 med_par = 25
 high_par = 35
+id = "level_3"
 
 [node name="Start" type="Area2D" parent="."]
 position = Vector2(53.3333, -13.3333)
