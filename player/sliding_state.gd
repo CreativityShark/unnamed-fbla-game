@@ -34,7 +34,8 @@ func on_enter(player: Player):
 	
 	player.velocity.x = max(abs(player.velocity.x), player.MAX_SPEED) * sign(player.velocity.x)
 	
-	player.animation_handler.play("slide")
+	player.animation_handler.play("transition_to_slide")
+	player.animation_handler.queue_animation("slide")
 
 
 func on_exit(player: Player):

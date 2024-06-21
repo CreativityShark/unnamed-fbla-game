@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dr5lx8uxw4wua"]
+[gd_scene load_steps=61 format=3 uid="uid://dr5lx8uxw4wua"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_hhsf4"]
 [ext_resource type="Texture2D" uid="uid://bjw02i0kvxnoh" path="res://art/player/millie_dive.png" id="2_canna"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dton20v6apa70" path="res://art/player/millie_fall_transition.png" id="8_e1hdx"]
 [ext_resource type="Texture2D" uid="uid://csc7muowsrhtr" path="res://art/player/millie_squat.png" id="9_ci0h8"]
 [ext_resource type="Texture2D" uid="uid://bjm5twiihs0s1" path="res://art/player/millie_slider.png" id="10_2y38d"]
+[ext_resource type="Texture2D" uid="uid://cffi1bi26mvt5" path="res://art/player/millie_slide_transition.png" id="11_ypfbf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpdty"]
 atlas = ExtResource("2_canna")
@@ -176,6 +177,22 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_x6wfk"]
 atlas = ExtResource("9_ci0h8")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb0ic"]
+atlas = ExtResource("11_ypfbf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewlq4"]
+atlas = ExtResource("11_ypfbf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sttvk"]
+atlas = ExtResource("11_ypfbf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm8eg"]
+atlas = ExtResource("11_ypfbf")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4tyf8"]
 animations = [{
@@ -349,6 +366,26 @@ animations = [{
 "loop": false,
 "name": &"transition_to_jump",
 "speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb0ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb0ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewlq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sttvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm8eg")
+}],
+"loop": false,
+"name": &"transition_to_slide",
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7n52m"]
@@ -376,8 +413,10 @@ texture = ExtResource("2_ip264")
 texture_filter = 1
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_4tyf8")
-animation = &"slide"
+animation = &"transition_to_slide"
 autoplay = "idle"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)
