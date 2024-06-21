@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvmtgg14hib2"]
+[gd_scene load_steps=6 format=3 uid="uid://cvmtgg14hib2"]
 
 [ext_resource type="TileSet" uid="uid://chc0o8so6nq76" path="res://levels/tiles.tres" id="1_at66e"]
 [ext_resource type="Script" path="res://levels/level.gd" id="2_htqlw"]
 [ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://door.tscn" id="3_3yek6"]
 [ext_resource type="Texture2D" uid="uid://cnwb62uronk6e" path="res://art/door.png" id="4_t23qh"]
+[ext_resource type="PackedScene" uid="uid://dx1edlgja11ys" path="res://obstacles/punchcard.tscn" id="5_vv8fx"]
 
 [node name="Hub" type="TileMap"]
 texture_filter = 1
@@ -30,3 +31,6 @@ destination_name = "level_3"
 texture_filter = 1
 position = Vector2(0, 8)
 texture = ExtResource("4_t23qh")
+
+[node name="Area2D" parent="." instance=ExtResource("5_vv8fx")]
+position = Vector2(565.333, 24)

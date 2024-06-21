@@ -27,6 +27,8 @@ func _ready():
 	for child in get_tree().get_nodes_in_group("dialogue"):
 		child.player = player
 		child.show_dialogue = show_dialogue
+	for child in get_tree().get_nodes_in_group("obstacle"):
+		child.player = player
 
 
 func _physics_process(delta):

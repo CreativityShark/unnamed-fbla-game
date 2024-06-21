@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://sojssw8845ur"]
+[gd_scene load_steps=10 format=3 uid="uid://sojssw8845ur"]
 
 [ext_resource type="TileSet" uid="uid://chc0o8so6nq76" path="res://levels/tiles.tres" id="1_6k3ck"]
 [ext_resource type="Script" path="res://levels/level.gd" id="2_2psdl"]
 [ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://door.tscn" id="3_8oogx"]
+[ext_resource type="PackedScene" uid="uid://dx1edlgja11ys" path="res://obstacles/punchcard.tscn" id="4_ihbuu"]
+[ext_resource type="PackedScene" uid="uid://dyp8qsdpiswfp" path="res://obstacles/gate.tscn" id="5_j1ouk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_baueo"]
 size = Vector2(16, 64)
@@ -12,6 +14,9 @@ size = Vector2(16, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpc2e"]
 size = Vector2(48, 16.0003)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l32t3"]
+size = Vector2(16, 64)
 
 [node name="Level1" type="TileMap"]
 texture_filter = 3
@@ -69,6 +74,23 @@ position = Vector2(181.333, 344)
 destination_name = "hub"
 exit_location = Vector2(544, 360)
 
+[node name="PunchCard" parent="." instance=ExtResource("4_ihbuu")]
+position = Vector2(576, -13.3333)
+
+[node name="Gate" parent="." instance=ExtResource("5_j1ouk")]
+position = Vector2(616, -16)
+open_position = Vector2(616, -80)
+default_position = Vector2(616, -16)
+
+[node name="Sprite2D" parent="Gate" index="0"]
+region_rect = Rect2(0, 0, 16, 64)
+
+[node name="CollisionShape2D" parent="Gate" index="1"]
+shape = SubResource("RectangleShape2D_l32t3")
+
 [connection signal="body_entered" from="Start" to="." method="_on_start_body_entered"]
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
+[connection signal="on_activated" from="PunchCard" to="Gate" method="_on_punch_card_on_activated"]
+
+[editable path="Gate"]

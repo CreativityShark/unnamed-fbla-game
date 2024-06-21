@@ -43,6 +43,7 @@ folder_colors={
 "res://addons/gut/": "yellow",
 "res://art/": "teal",
 "res://levels/": "purple",
+"res://obstacles/": "purple",
 "res://player/": "purple",
 "res://screens/": "purple",
 "res://testing/": "pink"
