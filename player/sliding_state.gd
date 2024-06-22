@@ -46,3 +46,7 @@ func on_exit(player: Player):
 
 func _on_grace_timer_timeout():
 	in_grace = false
+
+
+func is_attack():
+	return true

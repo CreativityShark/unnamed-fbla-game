@@ -13,3 +13,7 @@ func on_enter(_player: Player):
 
 func on_exit(_player: Player):
 	pass
+
+
+func is_attack():
+	return false

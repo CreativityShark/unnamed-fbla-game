@@ -14,7 +14,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	if can_be_activated and overlaps_body(player) and player.current_state == player.DIVING_STATE:
+	if can_be_activated and overlaps_body(player) and player.current_state.is_attack():
 		on_activated.emit()
 		$AnimationHandler.play("punch_in")
 		$AnimationHandler.queue_animation("idle")

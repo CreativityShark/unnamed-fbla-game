@@ -14,3 +14,7 @@ func on_enter(player: Player):
 	player.velocity.x += player.DIVE_FORCE * sign(player.velocity.x)
 	
 	player.animation_handler.play("dive")
+
+
+func is_attack():
+	return true

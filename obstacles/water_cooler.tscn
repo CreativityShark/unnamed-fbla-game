@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfmc5x8llvpd5"]
+
+[ext_resource type="Script" path="res://obstacles/water_cooler.gd" id="1_8d0yd"]
+[ext_resource type="Texture2D" uid="uid://dlm2uxbybxdbr" path="res://art/obstacles/water_cooler.png" id="1_q7pwu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hbcla"]
+radius = 6.0
+height = 16.0
+
+[node name="WaterCooler" type="Area2D"]
+script = ExtResource("1_8d0yd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hbcla")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_q7pwu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
