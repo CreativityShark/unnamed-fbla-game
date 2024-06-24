@@ -13,6 +13,7 @@ var met_med_par = false
 var met_high_par = false
 var time = 0
 var player: Player
+var gui: GUIHandler
 var change_level: Callable
 var show_dialogue: Callable
 var has_collided = false
@@ -23,6 +24,7 @@ signal harm_player
 func _ready():
 	for child in get_tree().get_nodes_in_group("door"):
 		child.player = player
+		child.gui = gui
 		child.change_level = change_level
 	for child in get_tree().get_nodes_in_group("obstacle"):
 		child.player = player
@@ -39,7 +41,6 @@ func _physics_process(delta):
 		# I'd prefer a cleaner solution, but this will work for now
 		if data and data.get_custom_data("harms_player") and player.position != spawn_pos:
 			harm_player.emit()
-			print("emit!")
 
 
 # pre: met_*_par variables have values and get_tree() returns a value that isn't null

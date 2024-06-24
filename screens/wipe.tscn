@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd2uywom66obm"]
+
+[ext_resource type="Script" path="res://screens/wipe.gd" id="1_erl46"]
+[ext_resource type="Texture2D" uid="uid://3sr7tgyjg0dl" path="res://art/ui/wipe.png" id="1_qjkw4"]
+
+[node name="Wipe" type="Control" groups=["screen"]]
+z_index = 10
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_erl46")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+top_level = true
+z_index = 10
+layout_mode = 0
+offset_left = -3289.0
+offset_right = -1369.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RightTransition" type="TextureRect" parent="ColorRect"]
+z_index = 10
+texture_filter = 1
+layout_mode = 0
+offset_left = 1920.0
+offset_right = 3290.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("1_qjkw4")
+
+[node name="LeftTransition" type="TextureRect" parent="ColorRect"]
+z_index = 10
+texture_filter = 1
+layout_mode = 0
+offset_left = -1368.0
+offset_right = 2.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("1_qjkw4")
+flip_h = true
+flip_v = true

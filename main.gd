@@ -70,13 +70,14 @@ func save_level_data():
 
 # Pre: level_name refers to the id of a level in res://levels/
 # Post: the level will be loaded and added to the scene tree
-func change_level(level_name: String, exit_location):
+func change_level(level_name: String, exit_location, finish_wipe = true):
 	var level_path = load("res://levels/" + level_name + ".tscn")
 	var level = level_path.instantiate()
 	
 	save_level_data()
 	
 	level.player = $Player
+	level.gui = $GUIHandler
 	level.change_level = Callable(self, "change_level")
 	level.harm_player.connect(Callable(self, "_on_level_harm_player"))
 	
@@ -98,16 +99,22 @@ func change_level(level_name: String, exit_location):
 	
 	current_level = level
 	var time_display = $GUIHandler.get_screen("TimeDisplay")
-	if (time_display != null):
+	if not time_display == null:
 		assert(time_display.is_in_group("screen"))
 		time_display.on_level_change(level)
+	var wipe = $GUIHandler.get_screen("Wipe")
+	if (not wipe == null) and finish_wipe:
+		await wipe.finish_wipe()
 
 
 func reset_level():
-	change_level(current_level.id, null)
+	change_level(current_level.id, null, false)
 
 
 func ready_gui():
+	var wipe = load("res://screens/wipe.tscn").instantiate()
+	$GUIHandler.display(wipe)
+	
 	var card_count = load("res://screens/card_count.tscn").instantiate()
 	card_count.player = $Player
 	$GUIHandler.display(card_count)
@@ -119,11 +126,13 @@ func ready_gui():
 	
 	var game_over = load("res://screens/game_over.tscn").instantiate()
 	game_over.quit = Callable(self, "bye_bye_now")
+	game_over.wipe = wipe
 	game_over.hide()
 	$GUIHandler.display(game_over)
 	
 	var main_menu = load("res://screens/main_menu.tscn").instantiate()
 	main_menu.quit = Callable(self, "bye_bye_now")
+	main_menu.wipe = wipe
 	$GUIHandler.display(main_menu)
 
 
