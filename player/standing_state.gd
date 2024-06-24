@@ -6,22 +6,6 @@ var timer: Timer
 
 
 func handle_input(player: Player, delta):
-	set_x_velocity(player, delta)
-	
-	if !player.is_on_floor():
-		if timer.is_stopped():
-			timer.start(player.COYOTE_TIME_WINDOW)
-		if falling:
-			return player.FALLING_STATE
-	if Input.is_action_just_pressed("up"):
-		return player.JUMPING_STATE
-	elif Input.is_action_just_pressed("down") and abs(player.velocity.x) >= player.SLIDE_THRESHOLD and not already_sliding():
-		return player.SLIDING_STATE
-	
-	super(player, delta)
-
-
-func set_x_velocity(player: Player, delta):
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		if direction == sign(player.velocity.x):
@@ -36,10 +20,22 @@ func set_x_velocity(player: Player, delta):
 	else:
 		# Playback speed equals x velocity / 600, but with a clamped between 0.4 and 1.2
 		player.animation_handler.play("run", max(min(abs(player.velocity.x / 600), 1.2), 0.4))
-
-
-func already_sliding():
-	return false
+	
+	if not player.is_on_floor():
+		if timer.is_stopped():
+			timer.start(player.COYOTE_TIME_WINDOW)
+		if falling:
+			return player.FALLING_STATE
+		else:
+			falling = false
+	
+	if Input.is_action_just_pressed("up"):
+		return player.JUMPING_STATE
+	
+	elif Input.is_action_just_pressed("down") and abs(player.velocity.x) >= player.SLIDE_THRESHOLD:
+		return player.SLIDING_STATE
+	
+	super(player, delta)
 
 
 func on_enter(player: Player):
