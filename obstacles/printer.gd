@@ -1,9 +1,11 @@
+class_name Printer
 extends Area2D
 
 
 @export var launch_velocity = -500
 var player: Player
 var paper_scene = load("res://obstacles/paper.tscn")
+var harm_player: Callable
 
 
 func _ready():
@@ -38,4 +40,5 @@ func shoot():
 	var paper = paper_scene.instantiate()
 	paper.velocity = launch_velocity
 	paper.player = player
+	paper.harm_player = harm_player
 	add_child(paper)

@@ -331,10 +331,8 @@ script = ExtResource("1_k1ljw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2xhi8")
-animation = &"crumble"
+animation = &"idle"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.893042
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.5)

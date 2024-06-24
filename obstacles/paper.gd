@@ -7,6 +7,7 @@ var velocity = -500
 var initial_position: Vector2
 var player: Player
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
+var harm_player: Callable
 
 
 func _ready():
@@ -40,9 +41,13 @@ func _physics_process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	if body is Player and body.current_state == body.DIVING_STATE:
+	if not body is Player:
+		return
+	if body.current_state == body.DIVING_STATE:
 		body.velocity.y += bounce_force
 		$PaperParticles.emitting = true
 		$AnimatedSprite2D.hide()
 		await get_tree().create_timer(0.5).timeout
 		queue_free()
+	elif not body.current_state == body.SLIDING_STATE:
+		harm_player.call()
