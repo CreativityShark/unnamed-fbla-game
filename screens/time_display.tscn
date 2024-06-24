@@ -1,33 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://pp0o3e7rgxu"]
+[gd_scene load_steps=11 format=3 uid="uid://bgbt8j7t7l04o"]
 
-[ext_resource type="Script" path="res://screens/time_display.gd" id="1_m5dbb"]
-[ext_resource type="FontFile" uid="uid://k7fync4ajpya" path="res://art/joystix.monospace-regular.otf" id="1_noysi"]
-[ext_resource type="Texture2D" uid="uid://vv71m4be7rol" path="res://art/no_keycard.png" id="2_4fogm"]
-[ext_resource type="Texture2D" uid="uid://cihippgdjny6h" path="res://art/keycard.png" id="2_o4p50"]
+[ext_resource type="Script" path="res://screens/time_display.gd" id="1_mvyeg"]
+[ext_resource type="Texture2D" uid="uid://bge0uf0rpkuh6" path="res://art/ui/close_icon.png" id="2_kp7kb"]
+[ext_resource type="Texture2D" uid="uid://brjgt45olknsw" path="res://art/ui/keycard.png" id="2_vtcap"]
+[ext_resource type="Texture2D" uid="uid://ctu0tninr8n40" path="res://art/ui/maximize_icon.png" id="3_sddk7"]
+[ext_resource type="Texture2D" uid="uid://dj3aqpc0vobhw" path="res://art/ui/no_keycard.png" id="3_w8pso"]
+[ext_resource type="Texture2D" uid="uid://7fufcmqvhigr" path="res://art/ui/minimize_icon.png" id="4_15tg2"]
+[ext_resource type="FontFile" uid="uid://bsfcih5a8bv3a" path="res://font/Moderustic-Bold.otf" id="5_0mor1"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_k7amv"]
-font = ExtResource("1_noysi")
-font_size = 48
-outline_size = 20
+[sub_resource type="LabelSettings" id="LabelSettings_icl6f"]
+font = ExtResource("5_0mor1")
+font_size = 140
+outline_size = 24
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 24
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
 
-[sub_resource type="LabelSettings" id="LabelSettings_3ly8n"]
-font = ExtResource("1_noysi")
-font_size = 32
-outline_size = 20
+[sub_resource type="LabelSettings" id="LabelSettings_845ip"]
+font = ExtResource("5_0mor1")
+font_size = 50
+outline_size = 14
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
 
-[sub_resource type="LabelSettings" id="LabelSettings_ua7vt"]
-font = ExtResource("1_noysi")
-font_size = 32
-outline_size = 20
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_34qwj"]
-font = ExtResource("1_noysi")
-font_size = 32
-outline_size = 20
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uesh"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+shadow_size = 8
 
 [node name="TimeDisplay" type="Control" groups=["screen"]]
 texture_filter = 1
@@ -37,77 +42,166 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_m5dbb")
-card_texture = ExtResource("2_o4p50")
-no_card_texture = ExtResource("2_4fogm")
+script = ExtResource("1_mvyeg")
+card_texture = ExtResource("2_vtcap")
+no_card_texture = ExtResource("3_w8pso")
 
-[node name="HUDTimer" type="Label" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -360.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 200.0
+grow_horizontal = 0
+color = Color(0.13177, 0.504291, 0.750074, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
 layout_mode = 0
-offset_left = 528.0
-offset_top = -496.0
-offset_right = 944.0
-offset_bottom = -438.0
+offset_right = 336.0
+offset_bottom = 40.0
+color = Color(0.0622604, 0.309276, 0.534305, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+color = Color(1, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("2_kp7kb")
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 8.0
+offset_right = -48.0
+offset_bottom = 32.0
+texture = ExtResource("3_sddk7")
+
+[node name="TextureRect3" type="TextureRect" parent="ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 8.0
+offset_right = -88.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("4_15tg2")
+
+[node name="HUDTimer" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -352.0
+offset_top = 40.0
+offset_right = 24.0
+offset_bottom = 232.0
+grow_horizontal = 0
+scale = Vector2(0.68, 0.68)
 text = "0:00"
-label_settings = SubResource("LabelSettings_k7amv")
-horizontal_alignment = 2
+label_settings = SubResource("LabelSettings_icl6f")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="LowPar" type="Label" parent="."]
-texture_filter = 1
-layout_mode = 0
-offset_left = 520.0
-offset_top = -432.0
-offset_right = 936.0
-offset_bottom = -392.0
+[node name="LowPar" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 48.0
+offset_right = 109.0
+offset_bottom = 109.0
+grow_horizontal = 0
+scale = Vector2(0.68, 0.68)
 text = "0:00"
-label_settings = SubResource("LabelSettings_3ly8n")
+label_settings = SubResource("LabelSettings_845ip")
 horizontal_alignment = 2
+vertical_alignment = 1
 
-[node name="CardIcon" type="TextureRect" parent="LowPar"]
-texture_filter = 1
+[node name="CardIcon" type="TextureRect" parent="ColorRect/LowPar"]
+show_behind_parent = true
 layout_mode = 0
-offset_left = 248.0
-offset_top = 4.0
-offset_right = 272.0
-offset_bottom = 20.0
-scale = Vector2(2, 2)
-texture = ExtResource("2_4fogm")
+offset_left = 211.765
+offset_top = -23.5294
+offset_right = 317.765
+offset_bottom = 71.4706
+texture = ExtResource("3_w8pso")
 
-[node name="MedPar" type="Label" parent="."]
-layout_mode = 0
-offset_left = 520.0
-offset_top = -392.0
-offset_right = 936.0
-offset_bottom = -352.0
+[node name="MedPar" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 88.0
+offset_right = 109.0
+offset_bottom = 149.0
+grow_horizontal = 0
+scale = Vector2(0.68, 0.68)
 text = "0:00"
-label_settings = SubResource("LabelSettings_ua7vt")
+label_settings = SubResource("LabelSettings_845ip")
 horizontal_alignment = 2
+vertical_alignment = 1
 
-[node name="CardIcon" type="TextureRect" parent="MedPar"]
-texture_filter = 1
+[node name="CardIcon" type="TextureRect" parent="ColorRect/MedPar"]
+show_behind_parent = true
 layout_mode = 0
-offset_left = 248.0
-offset_top = 4.0
-offset_right = 272.0
-offset_bottom = 20.0
-scale = Vector2(2, 2)
-texture = ExtResource("2_4fogm")
+offset_left = 211.765
+offset_top = -23.5294
+offset_right = 317.765
+offset_bottom = 71.4706
+texture = ExtResource("3_w8pso")
 
-[node name="HighPar" type="Label" parent="."]
-layout_mode = 0
-offset_left = 520.0
-offset_top = -352.0
-offset_right = 936.0
-offset_bottom = -312.0
+[node name="HighPar" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 128.0
+offset_right = 109.0
+offset_bottom = 189.0
+grow_horizontal = 0
+scale = Vector2(0.68, 0.68)
 text = "0:00"
-label_settings = SubResource("LabelSettings_34qwj")
+label_settings = SubResource("LabelSettings_845ip")
 horizontal_alignment = 2
+vertical_alignment = 1
 
-[node name="CardIcon" type="TextureRect" parent="HighPar"]
-texture_filter = 1
+[node name="CardIcon" type="TextureRect" parent="ColorRect/HighPar"]
+show_behind_parent = true
 layout_mode = 0
-offset_left = 248.0
-offset_top = 4.0
-offset_right = 272.0
-offset_bottom = 20.0
-scale = Vector2(2, 2)
-texture = ExtResource("2_4fogm")
+offset_left = 211.765
+offset_top = -23.5294
+offset_right = 317.765
+offset_bottom = 71.4706
+texture = ExtResource("3_w8pso")
+
+[node name="Panel" type="Panel" parent="ColorRect"]
+layout_mode = 0
+offset_right = 336.0
+offset_bottom = 177.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4uesh")

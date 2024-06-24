@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/resizable=false
 
 [dotnet]
 
@@ -42,6 +41,7 @@ folder_colors={
 "res://addons/godot-git-plugin/": "red",
 "res://addons/gut/": "yellow",
 "res://art/": "teal",
+"res://font/": "purple",
 "res://levels/": "purple",
 "res://obstacles/": "purple",
 "res://player/": "purple",

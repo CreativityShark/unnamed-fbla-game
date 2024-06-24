@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://sojssw8845ur"]
+[gd_scene load_steps=11 format=3 uid="uid://sojssw8845ur"]
 
 [ext_resource type="TileSet" uid="uid://chc0o8so6nq76" path="res://levels/tiles.tres" id="1_6k3ck"]
 [ext_resource type="Script" path="res://levels/level.gd" id="2_2psdl"]
 [ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://door.tscn" id="3_8oogx"]
 [ext_resource type="PackedScene" uid="uid://dx1edlgja11ys" path="res://obstacles/punchcard.tscn" id="4_ihbuu"]
 [ext_resource type="PackedScene" uid="uid://dyp8qsdpiswfp" path="res://obstacles/gate.tscn" id="5_j1ouk"]
+[ext_resource type="PackedScene" uid="uid://bmb3b7shw0pa" path="res://obstacles/printer.tscn" id="6_6i6ol"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_baueo"]
 size = Vector2(16, 64)
@@ -87,6 +88,9 @@ region_rect = Rect2(0, 0, 16, 64)
 
 [node name="CollisionShape2D" parent="Gate" index="1"]
 shape = SubResource("RectangleShape2D_l32t3")
+
+[node name="Printer" parent="." instance=ExtResource("6_6i6ol")]
+position = Vector2(504, 280)
 
 [connection signal="body_entered" from="Start" to="." method="_on_start_body_entered"]
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

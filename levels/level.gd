@@ -24,11 +24,10 @@ func _ready():
 	for child in get_tree().get_nodes_in_group("door"):
 		child.player = player
 		child.change_level = change_level
-	for child in get_tree().get_nodes_in_group("dialogue"):
-		child.player = player
-		child.show_dialogue = show_dialogue
 	for child in get_tree().get_nodes_in_group("obstacle"):
 		child.player = player
+		if child is Printer:
+			child.harm_player = Callable(do_player_harm)
 
 
 func _physics_process(delta):
@@ -86,6 +85,10 @@ func _on_finish_body_entered(body):
 func reset_time():
 	$LevelTimer.stop()
 	time = 0
+
+
+func do_player_harm():
+	harm_player.emit()
 
 
 func _on_level_timer_timeout():

@@ -1,38 +1,141 @@
-[gd_scene load_steps=5 format=3 uid="uid://b72se6c63fn5p"]
+[gd_scene load_steps=11 format=3 uid="uid://b72se6c63fn5p"]
 
-[ext_resource type="FontFile" uid="uid://k7fync4ajpya" path="res://art/joystix.monospace-regular.otf" id="1_lvrg6"]
 [ext_resource type="Script" path="res://screens/card_count.gd" id="1_odyoy"]
-[ext_resource type="Texture2D" uid="uid://cihippgdjny6h" path="res://art/keycard.png" id="2_31hg7"]
+[ext_resource type="FontFile" uid="uid://bsfcih5a8bv3a" path="res://font/Moderustic-Bold.otf" id="2_2umd4"]
+[ext_resource type="Theme" uid="uid://crjoawi7cq640" path="res://art/ui/theme.tres" id="2_d05if"]
+[ext_resource type="Texture2D" uid="uid://bge0uf0rpkuh6" path="res://art/ui/close_icon.png" id="2_wsgmy"]
+[ext_resource type="Texture2D" uid="uid://ctu0tninr8n40" path="res://art/ui/maximize_icon.png" id="3_7mxeb"]
+[ext_resource type="Texture2D" uid="uid://7fufcmqvhigr" path="res://art/ui/minimize_icon.png" id="4_o2c5k"]
+[ext_resource type="LabelSettings" uid="uid://cpvv7ckbhc4ss" path="res://art/ui/awesomest_text.tres" id="5_ttoqr"]
+[ext_resource type="Texture2D" uid="uid://brjgt45olknsw" path="res://art/ui/keycard.png" id="6_l5kd3"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_b26od"]
-font = ExtResource("1_lvrg6")
-font_size = 48
-outline_size = 20
+[sub_resource type="LabelSettings" id="LabelSettings_8evbv"]
+font = ExtResource("2_2umd4")
+font_size = 160
+outline_size = 14
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prlco"]
+bg_color = Color(1, 1, 1, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+shadow_size = 8
 
 [node name="CardCount" type="Control" groups=["screen"]]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -8.0
+offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_odyoy")
 
-[node name="Label" type="Label" parent="."]
-texture_filter = 1
-offset_left = -808.0
-offset_top = -512.0
-offset_right = -649.0
-offset_bottom = -435.0
-text = "000"
-label_settings = SubResource("LabelSettings_b26od")
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.004
+anchor_right = 0.004
+offset_left = 24.32
+offset_top = 24.0
+offset_right = 264.32
+offset_bottom = 256.0
+theme = ExtResource("2_d05if")
+color = Color(0.13177, 0.504291, 0.750074, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-texture_filter = 1
-offset_left = -936.0
-offset_top = -520.0
-offset_right = -912.0
-offset_bottom = -504.0
-scale = Vector2(5, 5)
-texture = ExtResource("2_31hg7")
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.143
+offset_bottom = 6.824
+color = Color(0.0622604, 0.309276, 0.534305, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/ColorRect"]
+layout_mode = 0
+offset_left = 200.0
+offset_right = 240.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("2_wsgmy")
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 8.0
+offset_right = -48.0
+offset_bottom = 32.0
+texture = ExtResource("3_7mxeb")
+
+[node name="TextureRect3" type="TextureRect" parent="ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 8.0
+offset_right = -88.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("4_o2c5k")
+
+[node name="Label" type="Label" parent="ColorRect/ColorRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 32.0
+text = "Cards"
+label_settings = ExtResource("5_ttoqr")
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.541
+anchor_top = 0.571
+anchor_right = 0.541
+anchor_bottom = 0.571
+offset_left = -121.84
+offset_top = -124.472
+offset_right = 78.16
+offset_bottom = 75.528
+texture = ExtResource("6_l5kd3")
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 56.0
+offset_right = 224.0
+offset_bottom = 248.0
+text = "00"
+label_settings = SubResource("LabelSettings_8evbv")
+horizontal_alignment = 2
+
+[node name="Panel" type="Panel" parent="ColorRect"]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 232.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_prlco")

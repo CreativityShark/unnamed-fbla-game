@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cpvv7ckbhc4ss"]
+
+[ext_resource type="FontFile" uid="uid://xt0mh5oj27an" path="res://font/Moderustic-Medium.otf" id="1_nakmp"]
+
+[resource]
+font = ExtResource("1_nakmp")
+font_size = 19
