@@ -1,0 +1,6 @@
+Scott Woznijak
+res://art/scott_woznijak.png
+Hey all, [b]Test Dialogue[/b] here!
+Other Character
+res://art/tileset.png
+Wow this sure is test dialogue!

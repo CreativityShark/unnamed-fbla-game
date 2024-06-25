@@ -28,6 +28,11 @@ func _process(delta):
 	if Input.is_action_just_pressed("quit"):
 		save()
 		get_tree().quit()
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		var convo = Conversation.new()
+		convo.load_file("test_dialogue")
+		$GUIHandler.get_screen("DialogueDisplay").display_dialogue(convo)
 
 
 # Pre: A file exists at user://epic.save and it is foratted as proper JSON
@@ -134,6 +139,10 @@ func ready_gui():
 	main_menu.quit = Callable(self, "bye_bye_now")
 	main_menu.wipe = wipe
 	$GUIHandler.display(main_menu)
+	
+	var dialogue_display = load("res://screens/dialogue_display.tscn").instantiate()
+	dialogue_display.hide()
+	$GUIHandler.display(dialogue_display)
 
 
 func _on_level_harm_player():

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bd4tpnxb4g2kw"
-path="res://.godot/imported/scott woznijak.png-319560d34cec5eae08661604e61c5de5.ctex"
+path="res://.godot/imported/scott_woznijak.png-e9c518246d422a62c154247109ee0dc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/scott woznijak.png"
-dest_files=["res://.godot/imported/scott woznijak.png-319560d34cec5eae08661604e61c5de5.ctex"]
+source_file="res://art/scott_woznijak.png"
+dest_files=["res://.godot/imported/scott_woznijak.png-e9c518246d422a62c154247109ee0dc2.ctex"]
 
 [params]
 

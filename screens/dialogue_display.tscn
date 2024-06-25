@@ -1,0 +1,148 @@
+[gd_scene load_steps=10 format=3 uid="uid://dlnh882i320o2"]
+
+[ext_resource type="Script" path="res://screens/dialogue_display.gd" id="1_6gj1o"]
+[ext_resource type="Texture2D" uid="uid://bge0uf0rpkuh6" path="res://art/ui/close_icon.png" id="2_tukms"]
+[ext_resource type="Texture2D" uid="uid://ctu0tninr8n40" path="res://art/ui/maximize_icon.png" id="3_kfbfx"]
+[ext_resource type="Texture2D" uid="uid://7fufcmqvhigr" path="res://art/ui/minimize_icon.png" id="4_h6hfu"]
+[ext_resource type="LabelSettings" uid="uid://cpvv7ckbhc4ss" path="res://art/ui/awesomest_text.tres" id="5_yv2yx"]
+[ext_resource type="FontFile" uid="uid://buretfsq8hjch" path="res://font/Moderustic-Regular.otf" id="6_u1rfs"]
+[ext_resource type="FontFile" uid="uid://bsfcih5a8bv3a" path="res://font/Moderustic-Bold.otf" id="7_52016"]
+[ext_resource type="FontFile" uid="uid://paky3yj37c88" path="res://font/Moderustic-Light.otf" id="8_lsj8j"]
+[ext_resource type="FontFile" uid="uid://ccyne1d3ch0t1" path="res://font/Moderustic-SemiBold.otf" id="9_vb65v"]
+
+[node name="DialogueDisplay" type="Control" groups=["screen"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_6gj1o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -896.0
+offset_top = -376.0
+offset_right = 896.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.800491, 0.800491, 0.800491, 1)
+
+[node name="Header" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.143
+offset_bottom = -9.192
+mouse_filter = 2
+color = Color(0.0622604, 0.309276, 0.534305, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/Header"]
+layout_mode = 0
+offset_left = 1752.0
+offset_right = 1792.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Header"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("2_tukms")
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect/Header"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 8.0
+offset_right = -48.0
+offset_bottom = 32.0
+texture = ExtResource("3_kfbfx")
+
+[node name="TextureRect3" type="TextureRect" parent="ColorRect/Header"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 8.0
+offset_right = -88.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("4_h6hfu")
+
+[node name="Label" type="Label" parent="ColorRect/Header"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 32.0
+text = "Dialogue"
+label_settings = ExtResource("5_yv2yx")
+
+[node name="Text" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 1776.0
+offset_bottom = 280.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_u1rfs")
+theme_override_fonts/bold_font = ExtResource("7_52016")
+theme_override_fonts/italics_font = ExtResource("8_lsj8j")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+bbcode_enabled = true
+text = "Testity testy test [b]TEST[/b] test [i]test[/i]"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="ControlMessage" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -48.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.295867, 0.295866, 0.295866, 1)
+theme_override_fonts/font = ExtResource("9_vb65v")
+theme_override_font_sizes/font_size = 20
+text = "Press DOWN to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextTimer" type="Timer" parent="."]
+wait_time = 0.025
+
+[node name="ControlDelay" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]
+[connection signal="timeout" from="ControlDelay" to="." method="_on_control_delay_timeout"]
