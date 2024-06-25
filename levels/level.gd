@@ -15,7 +15,6 @@ var time = 0
 var player: Player
 var gui: GUIHandler
 var change_level: Callable
-var show_dialogue: Callable
 var has_collided = false
 
 signal harm_player
@@ -30,6 +29,8 @@ func _ready():
 		child.player = player
 		if child is Printer:
 			child.harm_player = Callable(do_player_harm)
+		if child is DialogueTrigger:
+			child.gui = gui
 
 
 func _physics_process(delta):

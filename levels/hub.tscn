@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvmtgg14hib2"]
+[gd_scene load_steps=8 format=3 uid="uid://cvmtgg14hib2"]
 
 [ext_resource type="TileSet" uid="uid://chc0o8so6nq76" path="res://levels/tiles.tres" id="1_at66e"]
 [ext_resource type="Script" path="res://levels/level.gd" id="2_htqlw"]
 [ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://obstacles/door.tscn" id="3_3yek6"]
 [ext_resource type="Texture2D" uid="uid://cnwb62uronk6e" path="res://art/door.png" id="4_t23qh"]
 [ext_resource type="PackedScene" uid="uid://dx1edlgja11ys" path="res://obstacles/punchcard.tscn" id="5_vv8fx"]
+[ext_resource type="PackedScene" uid="uid://c4isfmlhdymls" path="res://obstacles/dialogue_trigger.tscn" id="7_lj3de"]
 [ext_resource type="PackedScene" uid="uid://dfmc5x8llvpd5" path="res://obstacles/water_cooler.tscn" id="7_t5sos"]
 
 [node name="Hub" type="TileMap"]
@@ -19,6 +20,7 @@ is_hub = true
 [node name="Door" parent="." instance=ExtResource("3_3yek6")]
 position = Vector2(181.333, 120)
 destination_name = "level_1"
+dialogue_file_name = "test_dialogue"
 
 [node name="Door2" parent="." instance=ExtResource("3_3yek6")]
 position = Vector2(373.333, 72)
@@ -38,3 +40,7 @@ position = Vector2(565.333, 24)
 
 [node name="WaterCooler" parent="." instance=ExtResource("7_t5sos")]
 position = Vector2(325.333, 72)
+
+[node name="DialogueTrigger" parent="." instance=ExtResource("7_lj3de")]
+position = Vector2(77.3333, 0)
+file_name = "test_dialogue"

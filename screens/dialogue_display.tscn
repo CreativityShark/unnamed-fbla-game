@@ -229,6 +229,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_styles/panel = ExtResource("10_kku6q")
 
+[node name="GraceTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="TextTimer" type="Timer" parent="."]
 wait_time = 0.025
 

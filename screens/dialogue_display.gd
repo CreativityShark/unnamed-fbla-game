@@ -7,23 +7,28 @@ var left_pos = Vector2(128, 364)
 var right_pos = Vector2(1536, 364)
 
 
+signal ended
+
+
 func _process(delta):
-	if Input.is_action_just_pressed("down"):
+	if Input.is_action_just_pressed("down") and $GraceTimer.is_stopped():
 		next_dialogue()
 
 
 func display_dialogue(convo: Conversation):
+	$GraceTimer.start()
 	get_tree().paused = true
 	current_convo = convo
 	next_dialogue()
-	$TextTimer.start()
 	self.show()
+	$TextTimer.start()
 
 
 func end():
 	$TextTimer.stop()
 	self.hide()
 	get_tree().paused = false
+	ended.emit()
 
 
 func next_dialogue():
