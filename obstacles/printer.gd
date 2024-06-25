@@ -33,7 +33,6 @@ func _on_printer_timer_timeout():
 	$AnimationHandler.play("bounce")
 	$AnimationHandler.queue_animation("reload")
 	$AnimationHandler.queue_animation("idle")
-	print($AnimationHandler.queue)
 	shoot()
 
 
