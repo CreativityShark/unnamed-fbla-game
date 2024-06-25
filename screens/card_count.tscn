@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://7fufcmqvhigr" path="res://art/ui/minimize_icon.png" id="4_o2c5k"]
 [ext_resource type="LabelSettings" uid="uid://cpvv7ckbhc4ss" path="res://art/ui/awesomest_text.tres" id="5_ttoqr"]
 [ext_resource type="Texture2D" uid="uid://brjgt45olknsw" path="res://art/ui/keycard.png" id="6_l5kd3"]
+[ext_resource type="StyleBox" uid="uid://5igvuj23ll8y" path="res://art/ui/window_border.tres" id="9_mqdxj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8evbv"]
 font = ExtResource("2_2umd4")
@@ -17,16 +18,6 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 14
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prlco"]
-bg_color = Color(1, 1, 1, 1)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-shadow_size = 8
 
 [node name="CardCount" type="Control" groups=["screen"]]
 texture_filter = 1
@@ -138,4 +129,4 @@ horizontal_alignment = 2
 layout_mode = 0
 offset_right = 240.0
 offset_bottom = 232.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_prlco")
+theme_override_styles/panel = ExtResource("9_mqdxj")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlnh882i320o2"]
+[gd_scene load_steps=11 format=3 uid="uid://dlnh882i320o2"]
 
 [ext_resource type="Script" path="res://screens/dialogue_display.gd" id="1_6gj1o"]
 [ext_resource type="Texture2D" uid="uid://bge0uf0rpkuh6" path="res://art/ui/close_icon.png" id="2_tukms"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://bsfcih5a8bv3a" path="res://font/Moderustic-Bold.otf" id="7_52016"]
 [ext_resource type="FontFile" uid="uid://paky3yj37c88" path="res://font/Moderustic-Light.otf" id="8_lsj8j"]
 [ext_resource type="FontFile" uid="uid://ccyne1d3ch0t1" path="res://font/Moderustic-SemiBold.otf" id="9_vb65v"]
+[ext_resource type="StyleBox" uid="uid://5igvuj23ll8y" path="res://art/ui/window_border.tres" id="10_kku6q"]
 
 [node name="DialogueDisplay" type="Control" groups=["screen"]]
 process_mode = 3
@@ -136,6 +137,97 @@ theme_override_font_sizes/font_size = 20
 text = "Press DOWN to continue"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = ExtResource("10_kku6q")
+
+[node name="PicWindow" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 432.0
+offset_right = 384.0
+offset_bottom = 728.0
+color = Color(0.13177, 0.504291, 0.750074, 1)
+
+[node name="Header" type="ColorRect" parent="PicWindow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.143
+offset_bottom = -0.328003
+color = Color(0.0622604, 0.309276, 0.534305, 1)
+
+[node name="ColorRect" type="ColorRect" parent="PicWindow/Header"]
+layout_mode = 0
+offset_left = 216.0
+offset_right = 256.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="PicWindow/Header"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("2_tukms")
+
+[node name="TextureRect2" type="TextureRect" parent="PicWindow/Header"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 8.0
+offset_right = -48.0
+offset_bottom = 32.0
+texture = ExtResource("3_kfbfx")
+
+[node name="TextureRect3" type="TextureRect" parent="PicWindow/Header"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 8.0
+offset_right = -88.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("4_h6hfu")
+
+[node name="Name" type="Label" parent="PicWindow/Header"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 32.0
+text = "Name go here"
+label_settings = ExtResource("5_yv2yx")
+
+[node name="Pic" type="TextureRect" parent="PicWindow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.135
+anchor_bottom = 0.135
+offset_top = 0.0399971
+offset_right = 256.0
+offset_bottom = 256.04
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="PicWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = ExtResource("10_kku6q")
 
 [node name="TextTimer" type="Timer" parent="."]
 wait_time = 0.025
