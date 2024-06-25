@@ -1,6 +1,3 @@
-Scott Woznijak
-res://art/scott_woznijak.png
-Hey all, [b]Test Dialogue[/b] here!
-Other Character
-res://art/tileset.png
-Wow this sure is test dialogue!
+Millie
+res://art/dialogue/millie.png
+And here's how it looks [b]in game![/b]
