@@ -11,7 +11,7 @@ signal ended
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("down") and $GraceTimer.is_stopped():
+	if visible and Input.is_action_just_pressed("down") and $GraceTimer.is_stopped():
 		next_dialogue()
 
 

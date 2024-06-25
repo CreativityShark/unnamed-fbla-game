@@ -141,9 +141,10 @@ func ready_gui():
 
 
 func _on_level_harm_player():
+	get_tree().paused = true
+	await get_tree().create_timer(1.0).timeout
 	$GUIHandler.show_screen("GameOver")
 	reset_level()
-	get_tree().paused = true
 
 
 func bye_bye_now():
