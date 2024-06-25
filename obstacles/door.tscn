@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bdanbgq20075i"]
 
-[ext_resource type="Script" path="res://door.gd" id="1_twgow"]
+[ext_resource type="Script" path="res://obstacles/door.gd" id="1_twgow"]
 [ext_resource type="Texture2D" uid="uid://cnwb62uronk6e" path="res://art/door.png" id="2_rse2k"]
 [ext_resource type="Texture2D" uid="uid://bbc48xdweuv4u" path="res://art/keycard_bubble.png" id="3_5angw"]
 [ext_resource type="FontFile" uid="uid://k7fync4ajpya" path="res://art/joystix.monospace-regular.otf" id="4_pxnlp"]

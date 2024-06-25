@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://chc0o8so6nq76" path="res://levels/tiles.tres" id="1_r4tgk"]
 [ext_resource type="Script" path="res://levels/level.gd" id="2_yl6ra"]
-[ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://door.tscn" id="3_r7nok"]
+[ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://obstacles/door.tscn" id="3_r7nok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_baueo"]
 size = Vector2(16, 64)

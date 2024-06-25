@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://chc0o8so6nq76" path="res://levels/tiles.tres" id="1_6k3ck"]
 [ext_resource type="Script" path="res://levels/level.gd" id="2_2psdl"]
-[ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://door.tscn" id="3_8oogx"]
+[ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://obstacles/door.tscn" id="3_8oogx"]
 [ext_resource type="PackedScene" uid="uid://dx1edlgja11ys" path="res://obstacles/punchcard.tscn" id="4_ihbuu"]
 [ext_resource type="PackedScene" uid="uid://dyp8qsdpiswfp" path="res://obstacles/gate.tscn" id="5_j1ouk"]
 [ext_resource type="PackedScene" uid="uid://bmb3b7shw0pa" path="res://obstacles/printer.tscn" id="6_6i6ol"]

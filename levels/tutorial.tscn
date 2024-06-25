@@ -2,9 +2,9 @@
 
 [ext_resource type="TileSet" uid="uid://chc0o8so6nq76" path="res://levels/tiles.tres" id="1_du05j"]
 [ext_resource type="Script" path="res://levels/level.gd" id="2_vdbtq"]
-[ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://door.tscn" id="3_tai2o"]
+[ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://obstacles/door.tscn" id="3_tai2o"]
 [ext_resource type="LabelSettings" uid="uid://c680bnqqdd173" path="res://awesome_small_text.tres" id="4_mr5l7"]
-[ext_resource type="PackedScene" uid="uid://qmx34ogunwbb" path="res://dialogue.tscn" id="5_pf3eq"]
+[ext_resource type="PackedScene" path="res://dialogue.tscn" id="5_pf3eq"]
 
 [node name="Tutorial" type="TileMap"]
 texture_filter = 1
