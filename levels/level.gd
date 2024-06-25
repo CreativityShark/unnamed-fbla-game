@@ -51,6 +51,9 @@ func get_data_to_save():
 	data[id + "_met_low_par"] = met_low_par
 	data[id + "_met_med_par"] = met_med_par
 	data[id + "_met_high_par"] = met_high_par
+	for child in get_children():
+		if child is DialogueTrigger and child.one_shot:
+			data[id + "_" + child.name + "_has_played"] = child.has_played
 	return data
 
 
@@ -61,6 +64,9 @@ func load_data_from_save(data: Dictionary):
 		met_med_par = data[id + "_met_med_par"]
 	if data.has(id + "_met_high_par"):
 		met_high_par = data[id + "_met_high_par"]
+	for child in get_children():
+		if child is DialogueTrigger and child.one_shot and data.has(id + "_" + child.name + "_has_played"):
+			child.has_played = data[id + "_" + child.name + "_has_played"]
 
 
 func _on_start_body_entered(body):

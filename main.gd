@@ -28,11 +28,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("quit"):
 		save()
 		get_tree().quit()
-	
-	if Input.is_action_just_pressed("ui_accept"):
-		var convo = Conversation.new()
-		convo.load_file("test_dialogue")
-		$GUIHandler.get_screen("DialogueDisplay").display_dialogue(convo)
 
 
 # Pre: A file exists at user://epic.save and it is foratted as proper JSON
