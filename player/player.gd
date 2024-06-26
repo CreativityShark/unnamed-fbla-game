@@ -27,6 +27,10 @@ static var SLIDING_STATE = SlidingState.new()
 
 var animation_handler = AnimationHandler.new()
 
+@export_category("SFX")
+@export var running_sfx: Array[AudioStreamPlayer]
+@export var jumping_sfx: Array[AudioStreamPlayer]
+
 var facing_left = false
 var ponytail_x = -16
 var current_state: State = FALLING_STATE

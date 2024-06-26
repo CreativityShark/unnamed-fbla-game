@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlnh882i320o2"]
+[gd_scene load_steps=15 format=3 uid="uid://dlnh882i320o2"]
 
 [ext_resource type="Script" path="res://screens/dialogue_display.gd" id="1_6gj1o"]
 [ext_resource type="Texture2D" uid="uid://bge0uf0rpkuh6" path="res://art/ui/close_icon.png" id="2_tukms"]
@@ -10,8 +10,12 @@
 [ext_resource type="FontFile" uid="uid://paky3yj37c88" path="res://font/Moderustic-Light.otf" id="8_lsj8j"]
 [ext_resource type="FontFile" uid="uid://ccyne1d3ch0t1" path="res://font/Moderustic-SemiBold.otf" id="9_vb65v"]
 [ext_resource type="StyleBox" uid="uid://5igvuj23ll8y" path="res://art/ui/window_border.tres" id="10_kku6q"]
+[ext_resource type="AudioStream" uid="uid://hbb5ki2wxiy5" path="res://sfx/talk_1.wav" id="11_4hamc"]
+[ext_resource type="AudioStream" uid="uid://b4t8h3biewcbw" path="res://sfx/talk_2.wav" id="12_ls357"]
+[ext_resource type="AudioStream" uid="uid://dlvqjcweas5l6" path="res://sfx/talk_3.wav" id="13_evvdw"]
+[ext_resource type="AudioStream" uid="uid://b1fn20ouvv0e1" path="res://sfx/talk_4.wav" id="14_l8sg8"]
 
-[node name="DialogueDisplay" type="Control" groups=["screen"]]
+[node name="DialogueDisplay" type="Control" node_paths=PackedStringArray("text_noises") groups=["screen"]]
 process_mode = 3
 texture_filter = 1
 layout_mode = 3
@@ -22,6 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_6gj1o")
+text_noises = [NodePath("TalkSFX1"), NodePath("TalkSFX2"), NodePath("TalkSFX3"), NodePath("TalkSFX4")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -236,11 +241,27 @@ wait_time = 0.3
 one_shot = true
 
 [node name="TextTimer" type="Timer" parent="."]
-wait_time = 0.025
+wait_time = 0.05
 
 [node name="ControlDelay" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="TalkSFX1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_4hamc")
+volume_db = -15.0
+
+[node name="TalkSFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ls357")
+volume_db = -15.0
+
+[node name="TalkSFX3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_evvdw")
+volume_db = -15.0
+
+[node name="TalkSFX4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_l8sg8")
+volume_db = -15.0
 
 [connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]
 [connection signal="timeout" from="ControlDelay" to="." method="_on_control_delay_timeout"]

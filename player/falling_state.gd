@@ -10,6 +10,7 @@ func on_enter(player: Player):
 
 func handle_input(player: Player, delta):
 	if player.is_on_floor():
+		player.get_node("LandSFX").play()
 		return player.STANDING_STATE
 	
 	var direction = Input.get_axis("left", "right")

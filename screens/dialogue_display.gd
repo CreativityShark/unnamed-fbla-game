@@ -5,6 +5,7 @@ var current_convo: Conversation
 var current_dialogue: Conversation.Dialogue
 var left_pos = Vector2(128, 364)
 var right_pos = Vector2(1536, 364)
+@export var text_noises: Array[AudioStreamPlayer]
 
 
 signal ended
@@ -53,6 +54,7 @@ func next_dialogue():
 func _on_text_timer_timeout():
 	if $ColorRect/Text.visible_characters < len($ColorRect/Text.text):
 		$ColorRect/Text.visible_characters += 1
+		text_noises.pick_random().play()
 	elif $ControlDelay.is_stopped() and not $ColorRect/ControlMessage.visible:
 		$ControlDelay.start()
 

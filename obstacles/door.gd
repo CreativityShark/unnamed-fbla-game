@@ -22,6 +22,7 @@ func _process(delta):
 			var dialogue_display = gui.get_screen("DialogueDisplay")
 			dialogue_display.display_dialogue(convo)
 			await dialogue_display.ended
+		$DoorSFX.play()
 		await gui.get_screen("Wipe").start_wipe()
 		change_level.call(destination_name, exit_location)
 	

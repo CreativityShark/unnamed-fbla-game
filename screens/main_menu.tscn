@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq8nsvuoeaefj"]
+[gd_scene load_steps=11 format=3 uid="uid://bq8nsvuoeaefj"]
 
 [ext_resource type="Script" path="res://screens/main_menu.gd" id="1_pktya"]
 [ext_resource type="LabelSettings" uid="uid://bq1hjxo5lbik8" path="res://awesome_title_text.tres" id="2_tlglw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://hccmrw7snew6" path="res://art/button_press.png" id="4_vu623"]
 [ext_resource type="Texture2D" uid="uid://ewc8lul35a2w" path="res://art/button_hover.png" id="5_if51n"]
 [ext_resource type="FontFile" uid="uid://k7fync4ajpya" path="res://art/joystix.monospace-regular.otf" id="6_pc2t0"]
+[ext_resource type="AudioStream" uid="uid://c634tth3lqeae" path="res://sfx/button.wav" id="7_n30dm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b8rsu"]
 font = ExtResource("6_pc2t0")
@@ -116,6 +117,9 @@ dive: up arrow / W (in air)
 pound: down arrow / S (in air)
 open door: down arrow / s"
 label_settings = SubResource("LabelSettings_tmn0x")
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_n30dm")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dr5lx8uxw4wua"]
+[gd_scene load_steps=69 format=3 uid="uid://dr5lx8uxw4wua"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_hhsf4"]
 [ext_resource type="Texture2D" uid="uid://bjw02i0kvxnoh" path="res://art/player/millie_dive.png" id="2_canna"]
@@ -13,6 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://csc7muowsrhtr" path="res://art/player/millie_squat.png" id="9_ci0h8"]
 [ext_resource type="Texture2D" uid="uid://bjm5twiihs0s1" path="res://art/player/millie_slider.png" id="10_2y38d"]
 [ext_resource type="Texture2D" uid="uid://cffi1bi26mvt5" path="res://art/player/millie_slide_transition.png" id="11_ypfbf"]
+[ext_resource type="AudioStream" uid="uid://c51m1r23b5ycy" path="res://sfx/hup_1.wav" id="14_5e5ng"]
+[ext_resource type="AudioStream" uid="uid://cjok54mgtdkot" path="res://sfx/step_1.wav" id="14_wita7"]
+[ext_resource type="AudioStream" uid="uid://b03tkk002ihjt" path="res://sfx/hup_2.wav" id="15_01im5"]
+[ext_resource type="AudioStream" uid="uid://1ynfqr7nu8k1" path="res://sfx/step_2.wav" id="15_k2lbp"]
+[ext_resource type="AudioStream" uid="uid://ctchxfuce3xf" path="res://sfx/step_3.wav" id="16_7q7wg"]
+[ext_resource type="AudioStream" uid="uid://bksx8nqbyh7fk" path="res://sfx/hup_3.wav" id="16_xi5m0"]
+[ext_resource type="AudioStream" uid="uid://dihhepa8h3jv3" path="res://sfx/step_4.wav" id="17_3r06b"]
+[ext_resource type="AudioStream" uid="uid://bhat7ruqxyxvo" path="res://sfx/land_1.wav" id="17_u38lb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpdty"]
 atlas = ExtResource("2_canna")
@@ -391,9 +399,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7n52m"]
 size = Vector2(80, 104)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("running_sfx", "jumping_sfx")]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_hhsf4")
+running_sfx = [NodePath("RunSFX1"), NodePath("RunSFX2"), NodePath("RunSFX3"), NodePath("RunSFX4")]
+jumping_sfx = [NodePath("JumpSFX1"), NodePath("JumpSFX2"), NodePath("JumpSFX3")]
 metadata/_edit_group_ = true
 
 [node name="PonytailBase" type="Sprite2D" parent="."]
@@ -419,3 +429,35 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_7n52m")
+
+[node name="RunSFX1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_wita7")
+volume_db = -30.0
+
+[node name="RunSFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_k2lbp")
+volume_db = -30.0
+
+[node name="RunSFX3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_7q7wg")
+volume_db = -30.0
+
+[node name="RunSFX4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_3r06b")
+volume_db = -30.0
+
+[node name="JumpSFX1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_5e5ng")
+volume_db = -10.0
+
+[node name="JumpSFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_01im5")
+volume_db = -10.0
+
+[node name="JumpSFX3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_xi5m0")
+volume_db = -10.0
+
+[node name="LandSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_u38lb")
+volume_db = -30.0

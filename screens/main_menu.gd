@@ -5,6 +5,7 @@ var wipe
 
 
 func _on_start_button_pressed():
+	$ButtonSFX.play()
 	await wipe.start_wipe()
 	get_tree().paused = false
 	self.hide()

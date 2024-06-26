@@ -18,3 +18,4 @@ func on_enter(player: Player):
 	player.animation_handler.play("jump")
 	player.animation_handler.queue_animation("transition_to_fall")
 	player.animation_handler.queue_animation("fall")
+	player.jumping_sfx.pick_random().play()

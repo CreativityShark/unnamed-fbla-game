@@ -3,6 +3,7 @@ extends State
 
 var falling = false
 var timer: Timer
+var run_sfx_cooldown: Timer
 
 
 func handle_input(player: Player, delta):
@@ -20,6 +21,9 @@ func handle_input(player: Player, delta):
 	else:
 		# Playback speed equals x velocity / 600, but with a clamped between 0.4 and 1.2
 		player.animation_handler.play("run", max(min(abs(player.velocity.x / 600), 1.2), 0.4))
+		if run_sfx_cooldown.is_stopped():
+			player.running_sfx.pick_random().play()
+			run_sfx_cooldown.start(0.2)
 	
 	if not player.is_on_floor():
 		if timer.is_stopped():
@@ -43,6 +47,10 @@ func on_enter(player: Player):
 	timer.name = "CoyoteTimer"
 	timer.timeout.connect(_on_coyote_timer_timeout)
 	add_child(timer)
+	run_sfx_cooldown = Timer.new()
+	run_sfx_cooldown.name = "RunSFXCooldown"
+	run_sfx_cooldown.one_shot = true
+	add_child(run_sfx_cooldown)
 	falling = false
 
 func on_exit(_player: Player):
