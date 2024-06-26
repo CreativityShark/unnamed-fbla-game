@@ -47,6 +47,7 @@ folder_colors={
 "res://obstacles/": "purple",
 "res://player/": "purple",
 "res://screens/": "purple",
+"res://sfx/": "purple",
 "res://testing/": "pink"
 }
 

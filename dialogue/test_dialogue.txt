@@ -1,3 +1,15 @@
 Millie
-res://art/dialogue/millie.png
+res://art/dialogue/millie_smirk.png
 And here's how it looks [b]in game![/b]
+Millie
+res://art/dialogue/millie_guh.png
+Guh?
+Millie
+res://art/dialogue/millie_tilt.png
+like idk man
+Employer
+res://art/dialogue/megaphone.png
+Hey look I'm on the other side of the screen haha
+Millie
+res://art/dialogue/millie_cry.png
+man what the heck :(

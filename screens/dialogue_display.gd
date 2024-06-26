@@ -40,7 +40,7 @@ func next_dialogue():
 	$PicWindow/Pic.texture = current_dialogue.image
 	$ColorRect/Text.text = current_dialogue.text
 	
-	if current_dialogue.name == "Other Character":
+	if current_dialogue.name == "Employer":
 		$PicWindow.position = right_pos
 	else:
 		$PicWindow.position = left_pos

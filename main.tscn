@@ -21,6 +21,7 @@ process_mode = 1
 [node name="Player" parent="." instance=ExtResource("3_i020s")]
 process_mode = 1
 scale = Vector2(0.5, 0.5)
+COYOTE_TIME_WINDOW = 0.35
 
 [node name="GUIHandler" type="CanvasLayer" parent="."]
 process_mode = 3
