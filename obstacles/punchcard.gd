@@ -18,6 +18,8 @@ func _physics_process(delta):
 		on_activated.emit()
 		$AnimationHandler.play("punch_in")
 		$AnimationHandler.queue_animation("idle")
+		if not $PunchoutSFX.playing:
+			$PunchoutSFX.play()
 		can_be_activated = false
 	
 	if not can_be_activated and not overlaps_body(player):

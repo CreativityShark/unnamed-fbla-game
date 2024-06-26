@@ -1,9 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://dx1edlgja11ys"]
+[gd_scene load_steps=44 format=3 uid="uid://dx1edlgja11ys"]
 
 [ext_resource type="Texture2D" uid="uid://dcp3eljl0gaks" path="res://art/obstacles/punchcard_machine.png" id="1_k2sn1"]
 [ext_resource type="Script" path="res://obstacles/punchcard.gd" id="1_osebp"]
 [ext_resource type="Texture2D" uid="uid://behfil2higtdf" path="res://art/obstacles/punchcard_punch.png" id="2_wosi5"]
 [ext_resource type="Script" path="res://animation_handler.gd" id="4_8rjvf"]
+[ext_resource type="AudioStream" uid="uid://c0cpohaonr8fj" path="res://sfx/punchout.wav" id="5_hmj68"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwkwf"]
 atlas = ExtResource("1_k2sn1")
@@ -289,3 +290,6 @@ shape = SubResource("RectangleShape2D_tnoke")
 
 [node name="AnimationHandler" type="Node" parent="."]
 script = ExtResource("4_8rjvf")
+
+[node name="PunchoutSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_hmj68")
