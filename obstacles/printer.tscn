@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bmb3b7shw0pa"]
+[gd_scene load_steps=55 format=3 uid="uid://bmb3b7shw0pa"]
 
 [ext_resource type="Script" path="res://obstacles/printer.gd" id="1_k1ljw"]
 [ext_resource type="Texture2D" uid="uid://dtlrrm80cb7t6" path="res://art/obstacles/printer_bounce.png" id="1_ycrt8"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dlwpqd3pkk8kn" path="res://art/obstacles/printer_reload.png" id="5_okjn8"]
 [ext_resource type="Texture2D" uid="uid://dujl14j37souk" path="res://art/obstacles/printer_suck.png" id="5_p8xd4"]
 [ext_resource type="Script" path="res://animation_handler.gd" id="6_fcabs"]
+[ext_resource type="AudioStream" uid="uid://cpdacrd2fabsm" path="res://sfx/printer_reload.wav" id="10_b3ipi"]
+[ext_resource type="AudioStream" uid="uid://cpp5s47t4e6a3" path="res://sfx/printer_shoot.wav" id="11_v07dj"]
+[ext_resource type="AudioStream" uid="uid://djgwnogwnm28g" path="res://sfx/printer_suck.wav" id="12_q20m1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cww74"]
 atlas = ExtResource("1_ycrt8")
@@ -221,7 +224,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 3.0,
+"duration": 12.0,
 "texture": SubResource("AtlasTexture_fg0ip")
 }, {
 "duration": 1.0,
@@ -366,5 +369,14 @@ color_initial_ramp = SubResource("Gradient_csdb5")
 [node name="PrinterTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="ReloadSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_b3ipi")
+
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_v07dj")
+
+[node name="SuckSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_q20m1")
 
 [connection signal="timeout" from="PrinterTimer" to="." method="_on_printer_timer_timeout"]

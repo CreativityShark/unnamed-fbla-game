@@ -11,7 +11,7 @@ func _on_start_button_pressed():
 	get_tree().paused = false
 	self.hide()
 	await wipe.finish_wipe()
-	$FunnyText.text = funnies[randi_range(0, funnies.size())]
+	$FunnyText.text = funnies.pick_random()
 
 
 func _on_quit_button_pressed():

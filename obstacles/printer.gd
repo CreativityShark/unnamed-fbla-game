@@ -17,6 +17,7 @@ func _process(delta):
 	if $PrinterTimer.time_left < 5 and ($AnimationHandler.get_playing() == "idle" or $AnimationHandler.get_playing() == "reload"):
 		$AnimationHandler.play("suck")
 		$AnimationHandler.queue_animation("idle_empty")
+		$SuckSFX.play()
 
 
 func _physics_process(delta):
@@ -34,6 +35,9 @@ func _on_printer_timer_timeout():
 	$AnimationHandler.queue_animation("reload")
 	$AnimationHandler.queue_animation("idle")
 	shoot()
+	$ShootSFX.play()
+	await $ShootSFX.finished
+	$ReloadSFX.play()
 
 
 func shoot():

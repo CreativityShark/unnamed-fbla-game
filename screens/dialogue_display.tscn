@@ -250,18 +250,22 @@ autostart = true
 [node name="TalkSFX1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_4hamc")
 volume_db = -15.0
+bus = &"GUI"
 
 [node name="TalkSFX2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_ls357")
 volume_db = -15.0
+bus = &"GUI"
 
 [node name="TalkSFX3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_evvdw")
 volume_db = -15.0
+bus = &"GUI"
 
 [node name="TalkSFX4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_l8sg8")
 volume_db = -15.0
+bus = &"GUI"
 
 [connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]
 [connection signal="timeout" from="ControlDelay" to="." method="_on_control_delay_timeout"]

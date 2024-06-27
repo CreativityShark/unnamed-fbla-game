@@ -81,9 +81,11 @@ text = "Quit"
 
 [node name="LoseSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_q4bd4")
+bus = &"GUI"
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_vq6yh")
+bus = &"GUI"
 
 [connection signal="pressed" from="ContinueButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

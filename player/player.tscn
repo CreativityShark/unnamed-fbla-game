@@ -432,32 +432,40 @@ shape = SubResource("RectangleShape2D_7n52m")
 
 [node name="RunSFX1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_wita7")
-volume_db = -30.0
+volume_db = -20.0
+bus = &"Player"
 
 [node name="RunSFX2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_k2lbp")
-volume_db = -30.0
+volume_db = -20.0
+bus = &"Player"
 
 [node name="RunSFX3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_7q7wg")
-volume_db = -30.0
+volume_db = -20.0
+bus = &"Player"
 
 [node name="RunSFX4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_3r06b")
-volume_db = -30.0
+volume_db = -20.0
+bus = &"Player"
 
 [node name="JumpSFX1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_5e5ng")
-volume_db = -10.0
+volume_db = -5.0
+bus = &"Player"
 
 [node name="JumpSFX2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_01im5")
-volume_db = -10.0
+volume_db = -5.0
+bus = &"Player"
 
 [node name="JumpSFX3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_xi5m0")
-volume_db = -10.0
+volume_db = -5.0
+bus = &"Player"
 
 [node name="LandSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_u38lb")
-volume_db = -30.0
+volume_db = -20.0
+bus = &"Player"

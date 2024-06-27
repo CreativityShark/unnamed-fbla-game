@@ -120,6 +120,7 @@ label_settings = SubResource("LabelSettings_tmn0x")
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_n30dm")
+bus = &"GUI"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
