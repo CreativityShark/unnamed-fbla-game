@@ -33,10 +33,12 @@ exit_location = Vector2(688, 8)
 [node name="SpikesDoor" parent="." instance=ExtResource("3_weqds")]
 position = Vector2(104, 56)
 destination_name = "spikes"
+exit_location = Vector2(0, 8)
 
 [node name="PrintersDoor" parent="." instance=ExtResource("3_weqds")]
 position = Vector2(178, -8)
 destination_name = "printers"
+exit_location = Vector2(24, 8)
 
 [node name="ExitDoor" parent="." instance=ExtResource("3_weqds")]
 position = Vector2(-146, 56)
