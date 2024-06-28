@@ -368,7 +368,6 @@ color_initial_ramp = SubResource("Gradient_csdb5")
 
 [node name="PrinterTimer" type="Timer" parent="."]
 wait_time = 10.0
-autostart = true
 
 [node name="ReloadSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_b3ipi")

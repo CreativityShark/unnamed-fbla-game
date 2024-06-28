@@ -3,12 +3,15 @@ extends Area2D
 
 
 @export var launch_velocity = -500
+@export var cooldown = 10.0
+@export var initial_cooldown = 10.0
 var player: Player
 var paper_scene = load("res://obstacles/paper.tscn")
 var harm_player: Callable
 
 
 func _ready():
+	$PrinterTimer.start(initial_cooldown)
 	$AnimationHandler.sprite = $AnimatedSprite2D
 	$AnimationHandler.play("idle") 
 
@@ -35,6 +38,7 @@ func _on_printer_timer_timeout():
 	$AnimationHandler.queue_animation("reload")
 	$AnimationHandler.queue_animation("idle")
 	shoot()
+	$PrinterTimer.start(cooldown)
 	$ShootSFX.play()
 	await $ShootSFX.finished
 	$ReloadSFX.play()
