@@ -25,6 +25,9 @@ func _process(delta):
 
 func _physics_process(delta):
 	if overlaps_body(player) and player.current_state.is_attack():
+		for child in get_children():
+			if child is Paper:
+				child.queue_free()
 		$AnimationHandler.play("crumble")
 		$ExplosionParticles.emitting = true
 		await get_tree().create_timer(0.5).timeout
