@@ -1,0 +1,6 @@
+Management
+res://art/dialogue/megaphone.png
+Great work clearing this room!
+Millie
+res://art/dialogue/millie_cry.png
+Oww... paper cuts suck.
