@@ -23,14 +23,16 @@ layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array(720890, 589824, 2, 720891, 589824, 1, 720886, 589824, 1, 589833, 458752, 3, 589830, 589824, 1, 262138, 524288, 2, 262137, 393216, 2, -327670, 720896, 4, 196616, 589824, 1)
 script = ExtResource("2_px1s3")
 is_hub = true
+id = "floor_1"
 
 [node name="EntryDoor" parent="." instance=ExtResource("3_weqds")]
 position = Vector2(0, 8)
 destination_name = "tutorial"
 exit_location = Vector2(688, 8)
 
-[node name="Door2" parent="." instance=ExtResource("3_weqds")]
+[node name="SpikesDoor" parent="." instance=ExtResource("3_weqds")]
 position = Vector2(104, 56)
+destination_name = "spikes"
 
 [node name="Door3" parent="." instance=ExtResource("3_weqds")]
 position = Vector2(178, -8)

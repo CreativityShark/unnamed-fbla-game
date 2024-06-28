@@ -1,0 +1,12 @@
+Millie
+res://art/dialogue/millie_oop.png
+Do most workplaces have pits of spikes in them?
+Management
+res://art/dialogue/megaphone.png
+We prefer to call them "failure deterrents".
+Millie
+res://art/dialogue/millie_guh.png
+There's absolutely no way this is OSHA compliant.
+Management
+res://art/dialogue/megaphone.png
+OSHA?
