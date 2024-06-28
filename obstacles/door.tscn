@@ -1,10 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdanbgq20075i"]
+[gd_scene load_steps=15 format=3 uid="uid://bdanbgq20075i"]
 
 [ext_resource type="Script" path="res://obstacles/door.gd" id="1_twgow"]
 [ext_resource type="Texture2D" uid="uid://cnwb62uronk6e" path="res://art/door.png" id="2_rse2k"]
-[ext_resource type="Texture2D" uid="uid://bbc48xdweuv4u" path="res://art/keycard_bubble.png" id="3_5angw"]
-[ext_resource type="FontFile" uid="uid://k7fync4ajpya" path="res://art/joystix.monospace-regular.otf" id="4_pxnlp"]
 [ext_resource type="AudioStream" uid="uid://cb7m1ndp46eq" path="res://sfx/door_open.wav" id="5_6s0j8"]
+[ext_resource type="Theme" uid="uid://crjoawi7cq640" path="res://art/ui/theme.tres" id="5_18eeb"]
+[ext_resource type="Texture2D" uid="uid://bge0uf0rpkuh6" path="res://art/ui/close_icon.png" id="6_iih0u"]
+[ext_resource type="Texture2D" uid="uid://ctu0tninr8n40" path="res://art/ui/maximize_icon.png" id="7_0jlch"]
+[ext_resource type="Texture2D" uid="uid://dj3aqpc0vobhw" path="res://art/ui/no_keycard.png" id="8_3qp4v"]
+[ext_resource type="Texture2D" uid="uid://7fufcmqvhigr" path="res://art/ui/minimize_icon.png" id="8_s81fo"]
+[ext_resource type="LabelSettings" uid="uid://cpvv7ckbhc4ss" path="res://art/ui/awesomest_text.tres" id="9_j7w0g"]
+[ext_resource type="FontFile" uid="uid://bsfcih5a8bv3a" path="res://font/Moderustic-Bold.otf" id="11_nl1m1"]
+[ext_resource type="StyleBox" uid="uid://5igvuj23ll8y" path="res://art/ui/window_border.tres" id="12_fqg42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvtq0"]
 size = Vector2(16, 16)
@@ -12,10 +18,14 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0q6v"]
 size = Vector2(48, 32)
 
-[sub_resource type="LabelSettings" id="LabelSettings_xf37m"]
-font = ExtResource("4_pxnlp")
-outline_size = 5
+[sub_resource type="LabelSettings" id="LabelSettings_i0563"]
+font = ExtResource("11_nl1m1")
+font_size = 120
+outline_size = 14
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
 
 [node name="Door" type="Area2D" groups=["door"]]
 script = ExtResource("1_twgow")
@@ -33,24 +43,120 @@ shape = SubResource("RectangleShape2D_cvtq0")
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_k0q6v")
 
-[node name="CardBubble" type="TextureRect" parent="ShowPrompt"]
+[node name="CardBubble" type="ColorRect" parent="ShowPrompt"]
 visible = false
+z_index = 5
 texture_filter = 1
-offset_left = -32.0
+anchors_preset = -1
+anchor_left = 0.004
+anchor_right = 0.004
+offset_left = -26.0
 offset_top = -56.0
-offset_right = 32.0
-offset_bottom = -16.0
-texture = ExtResource("3_5angw")
+offset_right = 190.0
+offset_bottom = 106.0
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
+theme = ExtResource("5_18eeb")
+color = Color(0.13177, 0.504291, 0.750074, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ShowPrompt/CardBubble"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.143
+offset_bottom = 16.834
+color = Color(0.0622604, 0.309276, 0.534305, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ShowPrompt/CardBubble/ColorRect"]
+layout_mode = 0
+offset_left = 176.0
+offset_right = 216.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ShowPrompt/CardBubble/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("6_iih0u")
+
+[node name="TextureRect2" type="TextureRect" parent="ShowPrompt/CardBubble/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 8.0
+offset_right = -48.0
+offset_bottom = 32.0
+texture = ExtResource("7_0jlch")
+
+[node name="TextureRect3" type="TextureRect" parent="ShowPrompt/CardBubble/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 8.0
+offset_right = -88.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("8_s81fo")
+
+[node name="Label" type="Label" parent="ShowPrompt/CardBubble/ColorRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 32.0
+text = "Required"
+label_settings = ExtResource("9_j7w0g")
+
+[node name="TextureRect" type="TextureRect" parent="ShowPrompt/CardBubble"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.541
+anchor_top = 0.571
+anchor_right = 0.541
+anchor_bottom = 0.571
+offset_left = -108.856
+offset_top = -84.502
+offset_right = 27.144
+offset_bottom = 51.498
+texture = ExtResource("8_3qp4v")
 
 [node name="Label" type="Label" parent="ShowPrompt/CardBubble"]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 8.0
-offset_right = 59.0
-offset_bottom = 31.0
+offset_left = -8.0
+offset_top = 32.0
+offset_right = 168.0
+offset_bottom = 176.0
 text = "00"
-label_settings = SubResource("LabelSettings_xf37m")
+label_settings = SubResource("LabelSettings_i0563")
 horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="ShowPrompt/CardBubble"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = -8.0
+offset_right = 224.0
+offset_bottom = 136.0
+rotation = 0.261799
+text = "!"
+label_settings = SubResource("LabelSettings_i0563")
+horizontal_alignment = 2
+
+[node name="Panel" type="Panel" parent="ShowPrompt/CardBubble"]
+layout_mode = 0
+offset_right = 216.0
+offset_bottom = 162.0
+theme_override_styles/panel = ExtResource("12_fqg42")
 
 [node name="DoorSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_6s0j8")

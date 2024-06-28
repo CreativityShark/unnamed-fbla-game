@@ -1,0 +1,12 @@
+Millie
+res://art/dialogue/millie_guh.png
+It's locked.
+Management
+res://art/dialogue/megaphone.png
+Yes! You will come across [b]keycards[/b] as you complete rooms going up the building which you can use to unlock doors that lead to higher floors. The faster you complete a room, the more keycards you'll earn.
+Millie
+res://art/dialogue/millie_cry.png
+(What have I gotten myself into...)
+Management
+res://art/dialogue/megaphone.png
+Good luck, and see you on the [b]third floor![/b]

@@ -10,7 +10,7 @@ var gui: GUIHandler
 var change_level: Callable
 
 func _ready():
-	$ShowPrompt/CardBubble/Label.text = "%02d" % card_requirement
+	$ShowPrompt/CardBubble/Label.text = str(card_requirement)
 	if dialogue_file_name:
 		convo = Conversation.new()
 		convo.load_file(dialogue_file_name)
@@ -24,7 +24,7 @@ func _process(delta):
 			await dialogue_display.ended
 		$DoorSFX.play()
 		await gui.get_screen("Wipe").start_wipe()
-		change_level.call(destination_name, exit_location)
+		change_level.call(destination_name, exit_location * 4)
 	
 	if $ShowPrompt.overlaps_body(player) and card_requirement > 0:
 		$ShowPrompt/CardBubble.show()

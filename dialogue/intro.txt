@@ -1,0 +1,24 @@
+???
+res://art/dialogue/megaphone.png
+Greetings, potential hire!
+Millie
+res://art/dialogue/millie_shock.png
+What? Who was that?
+Management
+res://art/dialogue/megaphone.png
+Your employers of course! We are happy to inform you that the position you are here to apply for is as good as yours!
+Millie
+res://art/dialogue/millie.png
+Huh? Without an interview or anything? That's... admittedly kind of shady.
+Management
+res://art/dialogue/megaphone.png
+All you need to do is make it through our obstacle course up to the [b]third floor[/b] to claim your new position.
+Millie
+res://art/dialogue/millie_tilt.png
+Obstacle course?
+Management
+res://art/dialogue/megaphone.png
+Yes! As part of our proprietary onboarding process, applicants must complete our obstacle course to gauge their physical fitness. If you would, please head to the door at your left to continue.
+Millie
+res://art/dialogue/millie.png
+Hmm... OK.

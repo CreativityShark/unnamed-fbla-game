@@ -24,6 +24,7 @@ layer_3/name = "foreground"
 layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array(10, 393216, 3)
 script = ExtResource("2_pbsgr")
+is_hub = true
 
 [node name="PunchCard" parent="." instance=ExtResource("3_himlc")]
 position = Vector2(600, -4)
