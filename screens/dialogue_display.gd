@@ -13,7 +13,10 @@ signal ended
 
 func _process(delta):
 	if visible and Input.is_action_just_pressed("down") and $GraceTimer.is_stopped():
-		next_dialogue()
+		if $ColorRect/Text.visible_characters < len($ColorRect/Text.text):
+			$ColorRect/Text.visible_characters = len($ColorRect/Text.text)
+		else:
+			next_dialogue()
 
 
 func display_dialogue(convo: Conversation):
@@ -41,7 +44,7 @@ func next_dialogue():
 	$PicWindow/Pic.texture = current_dialogue.image
 	$ColorRect/Text.text = current_dialogue.text
 	
-	if current_dialogue.name == "Employer":
+	if current_dialogue.name == "Management":
 		$PicWindow.position = right_pos
 	else:
 		$PicWindow.position = left_pos
