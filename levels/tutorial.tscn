@@ -56,7 +56,8 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 120
 text = "Use A and D or the arrow keys to run
-Use W or the up arrow key to jump."
+Use W or the up arrow key to jump.
+Holding the button lets you jump higher."
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 116.0
