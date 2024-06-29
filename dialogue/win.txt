@@ -1,0 +1,21 @@
+Management
+res://art/dialogue/megaphone.png
+You made it to the third floor! We congratulate you on your new position!
+Millie
+res://art/dialogue/millie_smirk.png
+Wow, I actually did it. Guess I'm more capable than I thought.
+Management
+res://art/dialogue/megaphone.png
+...
+Millie
+res://art/dialogue/millie.png
+...
+Management
+res://art/dialogue/megaphone.png
+...
+Millie
+res://art/dialogue/millie_guh.png
+Wait... what exactly does this company do again?
+Management
+res://art/dialogue/megaphone.png
+See you tomorrow at 9:00 sharp!

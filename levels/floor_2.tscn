@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2ccl6avelra2"]
+[gd_scene load_steps=6 format=3 uid="uid://c2ccl6avelra2"]
 
 [ext_resource type="TileSet" uid="uid://chc0o8so6nq76" path="res://levels/tiles.tres" id="1_l8lqe"]
 [ext_resource type="Script" path="res://levels/level.gd" id="2_u4hob"]
 [ext_resource type="PackedScene" uid="uid://bdanbgq20075i" path="res://obstacles/door.tscn" id="3_0rdgu"]
 [ext_resource type="PackedScene" uid="uid://c4isfmlhdymls" path="res://obstacles/dialogue_trigger.tscn" id="4_16ic4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf6jo"]
+size = Vector2(195, 20)
 
 [node name="Level" type="TileMap"]
 texture_filter = 1
@@ -30,16 +33,14 @@ position = Vector2(-248, 152)
 destination_name = "floor_1"
 exit_location = Vector2(-146, 56)
 
-[node name="PrintererDoor" parent="." instance=ExtResource("3_0rdgu")]
-position = Vector2(-200, 8)
-
 [node name="PunchoutDoor" parent="." instance=ExtResource("3_0rdgu")]
 position = Vector2(-40, 8)
+destination_name = "punchout"
 
 [node name="ExitDoor" parent="." instance=ExtResource("3_0rdgu")]
 position = Vector2(-40, -104)
-destination_name = "floor_3"
-card_requirement = 9
+destination_name = "win"
+card_requirement = 7
 
 [node name="DialogueTrigger" parent="." instance=ExtResource("4_16ic4")]
 position = Vector2(-122, 6)
@@ -47,6 +48,7 @@ one_shot = true
 file_name = "halfway"
 
 [node name="CollisionShape2D" parent="DialogueTrigger" index="0"]
-position = Vector2(16, 20)
+position = Vector2(11.5, 20)
+shape = SubResource("RectangleShape2D_yf6jo")
 
 [editable path="DialogueTrigger"]

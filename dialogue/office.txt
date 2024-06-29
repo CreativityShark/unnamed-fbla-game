@@ -1,0 +1,12 @@
+Millie
+res://art/dialogue/millie_tilt.png
+How come this obstacle course has all the stuff an office has?
+Management
+res://art/dialogue/megaphone.png
+In order to conserve costs and increase efficiency, the onboarding obstacle course doubles as workable office space. 
+Millie
+res://art/dialogue/millie_guh.png
+...
+Management
+res://art/dialogue/megaphone.png
+We fail to see any issue with this.
