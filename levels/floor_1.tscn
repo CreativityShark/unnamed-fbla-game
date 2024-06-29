@@ -42,7 +42,9 @@ exit_location = Vector2(24, 8)
 
 [node name="ExitDoor" parent="." instance=ExtResource("3_weqds")]
 position = Vector2(-146, 56)
+destination_name = "floor_2"
 card_requirement = 3
+exit_location = Vector2(-248, 152)
 
 [node name="IntroDialogue" parent="." instance=ExtResource("4_a8d4s")]
 position = Vector2(0, 6)

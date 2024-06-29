@@ -1,0 +1,6 @@
+Management
+res://art/dialogue/megaphone.png
+Congratulations on making it to the [b]second floor![/b] You are halfway there!
+Millie
+res://art/dialogue/millie.png
+I guess this hasn't been as bad as I expected it to be. Maybe I can do this.
